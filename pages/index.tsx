@@ -1,8 +1,14 @@
-import Navigation from "@/components/base/Navigation"
+import MainTemplate from "@/components/main/MainTemplate"
+import Header from "@/components/base/Header"
 
 function Homepage(){
   return (
-    <Navigation></Navigation>
+    <MainTemplate>
+      <Header></Header>
+    </MainTemplate>
+      
+   
+    
   )
 }
 
