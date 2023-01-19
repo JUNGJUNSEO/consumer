@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router'
 import classes from './Header.module.css'
 import Logo from './Logo'
+import SearchButton from './SearchButton';
 
 function Header() {
 
@@ -15,12 +16,8 @@ function Header() {
             <div className={classes.inner}>
                 <Logo/>
                 <div>
-                    <div>
-
-                    </div>
-                    <div>
-
-                    </div>
+                    <SearchButton/>
+                    <button>toggle button</button>
                     <button className={classes.button} onClick = {loginHandler}>
                         로그인
                     </button>
