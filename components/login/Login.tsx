@@ -8,7 +8,7 @@ function Login(){
             <div className={classes.title}>Login</div>
             <form>
                 <div className={classes.control}>
-                    <input placeholder="Email" type="email" required />
+                    <input placeholder="Email" type="email" />
                 </div>
                 <div className={classes.actions}>
                     <input type="submit" value ="Login"/>
