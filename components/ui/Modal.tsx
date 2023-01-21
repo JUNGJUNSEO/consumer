@@ -12,7 +12,7 @@ const BackDrop = (props : ModalProps) => {
     )
 }
 
-const ModalOverlay = () => {
+const SearchOverlay = () => {
     return (
         <div className={classes.modal}>
             <div>
@@ -35,7 +35,7 @@ const Modal = (props : PropsWithChildren<ModalProps>) => {
     return (
         <Fragment>
             {ReactDOM.createPortal(<BackDrop onClose = {props.onClose}/>, selectedElement)}
-            {ReactDOM.createPortal(<ModalOverlay/>, selectedElement)}
+            {ReactDOM.createPortal(<SearchOverlay/>, selectedElement)}
         </Fragment>
     )
 
