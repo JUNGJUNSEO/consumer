@@ -15,9 +15,9 @@ function Header() {
         <header className={classes.block}>
             <div className={classes.inner}>
                 <Logo/>
-                <div>
-                    <SearchButton/>
+                <div className={classes.items}>
                     <button>toggle button</button>
+                    <SearchButton/>
                     <button className={classes.button} onClick = {loginHandler}>
                         로그인
                     </button>
