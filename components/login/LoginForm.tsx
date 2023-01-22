@@ -1,8 +1,11 @@
 import classes from "./LoginForm.module.css"
 import EmailForm from "./EmailForm"
-
+import { useRouter } from 'next/router'
 
 function LoginForm(){
+
+    const router = useRouter()
+    console.log(router.pathname)
 
     return (
 
