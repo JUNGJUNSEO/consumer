@@ -12,17 +12,6 @@ const BackDrop = (props : ModalProps) => {
     )
 }
 
-const SearchOverlay = () => {
-    return (
-        <div className={classes.modal}>
-            <div>
-                <form>
-                    <input type="text" placeholder="비교 상품 검색"></input>
-                </form>
-            </div>
-        </div>
-    )
-}
 
 const Modal = (props : PropsWithChildren<ModalProps>) => {
 
@@ -35,7 +24,6 @@ const Modal = (props : PropsWithChildren<ModalProps>) => {
     return (
         <Fragment>
             {ReactDOM.createPortal(<BackDrop onClose = {props.onClose}/>, selectedElement)}
-            {ReactDOM.createPortal(<SearchOverlay/>, selectedElement)}
         </Fragment>
     )
 
