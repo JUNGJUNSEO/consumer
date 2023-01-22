@@ -1,0 +1,39 @@
+.block {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    width: auto;
+    transform: translate(-50%, 0%);
+    z-index: 100;
+  }
+
+.block div {
+    display: flex;
+    flex-direction: column;
+    width: calc(100vw - 40px);
+    max-width: 564px;
+    max-height: calc((var(--vh, 1vh) * 60) + 0px);
+    box-shadow: rgb(0 0 0 / 20%) 0px 2px 24px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    overflow: overlay;
+    overscroll-behavior: none;
+}
+
+.block form {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    padding: 24px;
+}
+
+.block input {
+    width: 100%;
+    margin-left: 8px;
+    caret-color: rgb(0, 195, 204);
+    font-family: system-ui;
+    line-height: 16px;
+    color: rgb(51, 55, 61);
+    font-size: 16px;
+}
