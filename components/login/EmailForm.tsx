@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react"
+import LoginButton from "../ui/Button/LoginButton"
 import classes from './EmailForm.module.css'
 
 interface stateProps {
@@ -63,9 +64,9 @@ function EmailForm () {
                 />
             </div>
             <div>
-                <button disabled = {!formIsValid}>
+                <LoginButton color = {"#734B87"}>
                     로그인
-                </button>
+                </LoginButton>
             </div>
             
         </form>
