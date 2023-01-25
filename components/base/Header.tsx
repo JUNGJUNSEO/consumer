@@ -1,17 +1,10 @@
 import Link from 'next/link';
-import { useRouter } from 'next/router'
-import { Fragment } from 'react';
 import classes from './Header.module.css'
 import Logo from './Logo'
-import SearchButton from './SearchButton';
+import {FaSearch} from "react-icons/fa"
 
 function Header() {
 
-    const router = useRouter();
-    console.log(router.query)
-    const loginHandler = () => {
-        router.push('/login')
-    }
 
     return (
     
@@ -21,14 +14,12 @@ function Header() {
                 <div className={classes.items}>
                     <button>toggle button</button>
                     <Link href="/?modal=search" as="/search">
-                        <SearchButton/>
+                        <FaSearch/>
                     </Link>
                     <Link href="/?modal=login" as="/login">
-                    
-                    </Link>
-                    <button className={classes.button} onClick = {loginHandler}>
                         로그인
-                    </button>
+                    </Link>
+                
                 </div>
             </div>
         </header>
