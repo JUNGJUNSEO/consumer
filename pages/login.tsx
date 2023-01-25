@@ -1,10 +1,9 @@
-import Login from "@/components/login/Login";
 import React from "react";
 
 function LoginPage(){
 
     return (
-        <Login/>
+       <div>'서정준'</div>
     )
 }
 
