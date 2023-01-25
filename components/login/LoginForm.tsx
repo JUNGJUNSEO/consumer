@@ -1,32 +1,49 @@
 import classes from "./LoginForm.module.css"
 import EmailForm from "./EmailForm"
-import { useRouter } from 'next/router'
+import ReactDOM from "react-dom"
+import { Fragment, PropsWithChildren } from "react"
+import LoginSocialButtons from "./LoginSocialButtons"
+import { MdClose } from 'react-icons/md';
 
-function LoginForm(){
+interface ModalProps {
+    onClose : () => void
+}
 
-    const router = useRouter()
-    console.log(router.pathname)
+
+function LoginForm(props:PropsWithChildren<ModalProps>){
+
+    const selectedElement = document.getElementById("modal")
 
     return (
 
-        <div className={classes.block}>
-            <div>
-                <h2>로그인</h2>
-                <section>
-                    <h4>이메일로 로그인</h4>
-                    <EmailForm/>
-                        
+        <Fragment>
+            {ReactDOM.createPortal(
+                (<div className={classes.block}>
+                    <div className={classes.exit}>
+                        <MdClose onClick = {props.onClose}/>
+                    </div>
+                    <div className={classes.form}>
+                        <div className={classes.body}>
+                            <h2>로그인</h2>
+                            <section>
+                                <h4>이메일로 로그인</h4>
+                                <EmailForm/>
+                            </section>
+                            <section>
+                                <h4>소셜 계정으로 로그인</h4>
+                                <LoginSocialButtons/>
+                            </section>
+                            
+                        </div>
+                        <div className={classes.foot}>
+                            <span>아직 회원이 아니신가요? </span>
+                            <div>회원 가입</div>
+                        </div>
 
-                </section>
-                <section>
-                    <h4>소셜 계정으로 로그인</h4>
-                </section>
-            </div>
-            <div>
-                <span>아직 회원이 아니신가요?</span>
-                <div>회원 가입</div>
-            </div>
-        </div>
+                    </div>
+                    
+                </div>), selectedElement)}
+        </Fragment>
 
     )
 }
