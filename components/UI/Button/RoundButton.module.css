@@ -1,9 +1,19 @@
 .button {
-    height: 2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
     font-size: 1rem;
+    font-weight: bold;
     border-radius: 1rem;
-    background-color: #343A40;
-    color: white;
+    border: none;
+    background-color: var(--black-color);
+    color: var(--white-color);
+
 }
+
+.button a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 2rem;
+    padding: 0 1rem;
+    
+}
+
