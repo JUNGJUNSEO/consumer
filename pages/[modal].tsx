@@ -1,8 +1,8 @@
-function search() {
+function ModalPage() {
 
     return (
-        <div></div>
+        <></>
     )
 }
 
-export default search
+export default ModalPage
