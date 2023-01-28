@@ -55,12 +55,12 @@ function TableItem(){
 			</div>
 			
 			<div  className={classes.wrapper}>
-				<ul className={classes.items}>
-					<li className={classes.item}>
+				<ul className={classes.products}>
+					<li className={classes.product}>
 						<div className={classes.top}>
 							<div ></div>
 							<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Macbook_Air_M1_Silver_PNG.png/1200px-Macbook_Air_M1_Silver_PNG.png" alt="product image"/>
-							<h3>Sumsung Series 6 J6300</h3>
+							<h3>Sumsung</h3>
 						</div>
 
 						<ul className={classes.list}>
@@ -71,11 +71,11 @@ function TableItem(){
 						</ul>
 					</li> 
 
-					<li className={classes.item}>
+					<li className={classes.product}>
 						<div className={classes.top}>
 							<div ></div>
 							<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Macbook_Air_M1_Silver_PNG.png/1200px-Macbook_Air_M1_Silver_PNG.png" alt="product image"/>
-							<h3>Sumsung Series 6 J6300</h3>
+							<h3>Sumsung</h3>
 						</div>
 
 						<ul className={classes.list}>
