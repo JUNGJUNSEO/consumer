@@ -1,0 +1,25 @@
+.layout {
+    position: sticky;
+    top: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 8px 20px;
+    z-index: 100;
+    background-color: var(--white-color);
+}
+
+.search {
+    display: flex;
+    flex: 1;
+}
+
+.search a {
+    all:unset;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0px 40px;
+}
+
