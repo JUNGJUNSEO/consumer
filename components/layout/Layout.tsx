@@ -1,12 +1,15 @@
 import { useRouter } from "next/router"
 import { Fragment, PropsWithChildren } from "react"
+import {SlLogin} from "react-icons/sl"
 import classes from './Layout.module.css'
 import LoginForm from "../login/LoginForm"
 import SearchInput from "../search/SearchInput"
 import Modal from "../ui/Modal"
 import Link from 'next/link';
 import Logo from './Logo'
+import UserIcon from "./UserIcon"
 import RoundButton from "../ui/Button/RoundButton"
+import UserMenu from "./UserMenu"
 
 
 function Layout(props : PropsWithChildren) {
@@ -15,6 +18,8 @@ function Layout(props : PropsWithChildren) {
     const closeHandler = () => {
         router.push("/")
     }
+    const user = true
+
     return (
         <Fragment>
             {router.query.modal && (
@@ -33,12 +38,23 @@ function Layout(props : PropsWithChildren) {
                         <SearchInput/>
                     </Link>
                 </div>
-                <RoundButton>
-                    <Link href="/?modal=login" as="/login">
+                {user ? (
+                    <div className={classes.user}>
+                        <RoundButton>
+                            <Link href="/?modal=login" as="/login">
+                                비교 상품 만들기
+                            </Link>
+                        </RoundButton>
+                        <UserIcon/>
+             
+                    </div>
+                ) : (
+                    <RoundButton>
+                        <Link href="/?modal=login" as="/login">
                             로그인
-                    </Link>
-                </RoundButton>
-                    
+                        </Link>
+                    </RoundButton>
+                )}
                 
             </div>
             <main>{props.children}</main>
