@@ -8,9 +8,9 @@ type RoundButtonProps  = {
 const RoundButton = (props: RoundButtonProps) => {
 
     return (
-        <button className={classes.button}>
+        <div className={classes.button}>
             {props.children}
-        </button>
+        </div>
     )
 }
 
