@@ -1,4 +1,5 @@
 import PostCardGrid from "@/components/common/PostCardGrid";
+import Post from "@/components/post/Post";
 
 
 
@@ -45,7 +46,7 @@ const posts = [
   {
     id: "m4",
     title: "Lorem ipsum dolor sit, amet consectetur adipisicing elit.",
-    tags: ["삼성", "LG"],
+    tags: ["samsung", "LG"],
     post_image: "https://codyhouse.co/app/assets/img/article-preview-img-1.jpg",
     author_image: "https://codyhouse.co/app/assets/img/article-preview-img-author-1.svg",
     updated_at: "2023-01-26",
@@ -59,11 +60,13 @@ const posts = [
 
 
 
+
+
 function Homepage(){
   return (
     <>
-
       <PostCardGrid posts={posts}/>
+      <Post/>
     </>
     
   )
