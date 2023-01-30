@@ -1,0 +1,139 @@
+.table {
+  display: flex;
+  width: 80%;
+  }
+  
+.table .features {
+    /* fixed left column - product properties list */
+    width: 300px;
+
+  }
+
+.table .features div {
+    height: 300px;
+    /* width: 150px; */
+    /* text-align: center;
+    padding: 1.25em 2.5em; */
+    /* transition: height 0.3s; */
+    /* cursor: pointer; */
+    /* background: #ffffff; */
+}
+
+.table .features ul {
+  font-size: 0.75rem;
+}
+
+
+/* @media only screen and (min-width: 1170px) {
+    .table .features {
+      width: 210px;
+    }
+} */
+ 
+ /* 스크롤 움직일 때 scrolling이라는 class를 추가함. */
+  /* .table.scrolling .features::after {
+   
+    opacity: 1;
+  } */
+  
+.features div,
+.features ul li{
+  /* fixed left column - products */
+
+  /* set line-height value equal to font-size of text inside product cells */
+  line-height: 14px;
+  padding: 25px 10px;
+  text-align: center;
+}
+/* @media only screen and (min-width: 1170px) {
+    .features div,
+    .features ul li {
+    text-transform: uppercase;
+    line-height: 16px;
+    padding: 25px 20px;
+    letter-spacing: 1px;
+  }
+} */
+
+
+.features ul li {
+    /* truncate text with dots */
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+.features ul li:nth-child(2n-1) {
+  background-color: #fafafa;
+}
+
+
+
+.wrapper {
+  overflow-x: auto;
+  /* this fixes the buggy scrolling on webkit browsers - mobile devices only - when overflow property is applied */
+  -webkit-overflow-scrolling: touch;
+
+}
+  
+.products {
+  /* products list wrapper */
+  width: auto;
+ 
+}
+.products::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+/* @media only screen and (min-width: 1170px) {
+    .products {
+      width: 2480px;
+      margin-left: 210px;
+    }
+}
+   */
+.products .product {
+    /* position: relative;
+    float: left; */
+    width: 300px;
+    text-align: center;
+    /* transition: opacity 0.3s, visibility 0.3s, transform 0.3s; */
+}
+
+  /* @media only screen and (min-width: 1170px) {
+    .products .product {
+      width: 310px;
+    }
+  } */
+  
+.product ul li {
+    padding: 25px 40px;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.product ul li:nth-child(2n-1) {
+  background-color: #fafafa;
+
+}
+
+
+
+  /* @media only screen and (min-width: 1170px) {
+    .list li {
+      font-size: 1.6rem;
+    }
+    .list li .rate {
+      padding: 22px 0;
+    }
+  } */
+
+
+
+
+.product .top img {
+    max-width: 100%;
+    display: block;
+    backface-visibility: hidden;
+}
