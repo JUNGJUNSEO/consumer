@@ -4,6 +4,7 @@ import {FaSlackHash} from "react-icons/fa"
 import {AiFillHeart} from "react-icons/ai"
 import { PartialPost } from "@/lib/graphql/post"
 import { useRouter } from "next/router"
+import TagList from "./TagList"
 
 
 
@@ -28,20 +29,7 @@ function PostCard({post} : PostCardProps){
             </div>
        
             <div className={classes.content}>
-                <div className={classes.categorys}>
-                    {post.tags.map((tag, index) => 
-                        {return (
-                            <a href="#0" key={post.id + index}>
-                                <FaSlackHash/>
-                                <i>{tag}</i>
-                        
-                            </a>
-                        )}
-                    )}
-                
-                    
-                </div>
-            
+                <TagList tags = {post.tags}/>
                 <div className={classes.title}>
                     <h3><a href="#0">{post.title}</a></h3>
                 </div>
