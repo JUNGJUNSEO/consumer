@@ -9,6 +9,7 @@ function UserIcon() {
                 src="https://codyhouse.co/app/assets/img/article-preview-img-author-1.svg"
                 alt="thumbnail"
             />
+            <MdArrowDropDown />
         </div>
     )
 }
