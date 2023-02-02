@@ -10,158 +10,135 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Navigation } from "swiper";
+import { EqualHeight , EqualHeightElement  } from "react-equal-height";
+
 
 function Table(){
 
 
     return (
 
-        // <div className={classes.table}>
-		// 	<div className={classes.features}>
-		// 		<div>제품 이미지</div>
-		// 		<ul>
-		// 			<li>Model</li>
-		// 			<li>Price</li>
-		// 			<li>Customer Rating</li>
-		// 			<li>Resolution</li>
-		// 			<li>Screen Type</li>
-		// 		</ul>
-		// 	</div>
-			
-		// 	<div  className={classes.wrapper}>
-		// 		<ul className={classes.products}>
-		// 			<li className={classes.product}>
-		// 				<div className={classes.top}>
-		// 					<div ></div>
-		// 					<img src="https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg" alt="product image"/>
+		<div className={classes.block}>
+			<div className={classes.table}>
+				<EqualHeight>
+					<div className={classes.features}>
+						<EqualHeightElement name = "image">
+							<div>제품 이미지</div>
+						</EqualHeightElement>
+						
+						<ul>
+							<li>Model</li>
+							<li>Price</li>
+							<li>Customer Rating</li>
+							<li>Resolution</li>
+							<li>Screen Type</li>
+						</ul>
+					</div>
+				
+				
+					<Swiper className={classes.products} slidesPerView={3} navigation={true} modules={[Navigation]} >
+						<SwiperSlide className={classes.product}>
+							<EqualHeightElement name = "image">
+								<div className={classes.top}>
+									<img src="https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg" alt="product image"/>
+								</div>
+
+							</EqualHeightElement>
 							
-		// 				</div>
 
-		// 				<ul className={classes.list}>
-		// 					<li>Samsung Ultra Speed Desktop</li>
-		// 					<li>$600</li>
-		// 					<li ><span>5/5</span></li>
-		// 					<li>1080p</li>
-		// 					<li>LED</li>
-		// 				</ul>
-		// 			</li> 
+							<ul className={classes.list}>
+								<li>Samsung Ultra Desktop</li>
+								<li>$600</li>
+								<li ><span>5/5</span></li>
+								<li>1080p</li>
+								<li>LED</li>
+							</ul>
+						</SwiperSlide>
+						<SwiperSlide className={classes.product}>
+							<EqualHeightElement name = "image">
+								<div className={classes.top}>
+						
+									<img src="https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg" alt="product image"/>
+									
+								</div>
 
-		// 			<li className={classes.product}>
-		// 				<div className={classes.top}>
-		// 					<div ></div>
-		// 					<img src="https://cdn.allets.com/commerce/goods/resize/650/20211122/1637567584438_%EC%94%A8_c.jpg" alt="product image"/>
-					
-		// 				</div>
-
-		// 				<ul className={classes.list}>
-		// 					<li>Samsung Ultra Speed Desktop</li>
-		// 					<li>$600</li>
-		// 					<li ><span>5/5</span></li>
-		// 					<li>1080p</li>
-		// 					<li>LED</li>
-		// 				</ul>
-		// 			</li> 
-
-		// 			<li className={classes.product}>
-		// 				<div className={classes.top}>
-		// 					<div ></div>
-		// 					<img src="https://cdn.allets.com/commerce/goods/resize/650/20211122/1637567608421_%EC%BD%94%EB%9E%84_c.jpg" alt="product image"/>
+							</EqualHeightElement>
 							
-		// 				</div>
 
-		// 				<ul className={classes.list}>
-		// 					<li>Samsung Ultra Speed Desktop</li>
-		// 					<li>$600</li>
-		// 					<li ><span>5/5</span></li>
-		// 					<li>1080p</li>
-		// 					<li>LED</li>
-		// 				</ul>
-		// 			</li> 
-
-        //         </ul>
-        //     </div>
-        // </div>
-
-
-		<div className={classes.table}>
-			<div className={classes.features}>
-				<div>제품 이미지</div>
-				<ul>
-					<li>Model</li>
-					<li>Price</li>
-					<li>Customer Rating</li>
-					<li>Resolution</li>
-					<li>Screen Type</li>
-				</ul>
-			</div>
-			
-			
-			<Swiper className={classes.products} slidesPerView={2} navigation={true} modules={[Navigation]} >
-				<SwiperSlide className={classes.product}>
-					<div className={classes.top}>
-						<div ></div>
-						<img src="https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg" alt="product image"/>
+							<ul className={classes.list}>
+								<li>Samsung Desktop</li>
+								<li>$600</li>
+								<li ><span>5/5</span></li>
+								<li>1080p</li>
+								<li>LED</li>
+							</ul>
+						</SwiperSlide>
+						<SwiperSlide className={classes.product}>
+							<EqualHeightElement name = "image">
+								<div className={classes.top}>
 						
-					</div>
+									<img src="https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg" alt="product image"/>
+									
+								</div>
 
-					<ul className={classes.list}>
-						<li>Samsung Ultra Speed Desktop</li>
-						<li>$600</li>
-						<li ><span>5/5</span></li>
-						<li>1080p</li>
-						<li>LED</li>
-					</ul>
-				</SwiperSlide>
-				<SwiperSlide className={classes.product}>
-					<div className={classes.top}>
-						<div ></div>
-						<img src="https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg" alt="product image"/>
+							</EqualHeightElement>
+							
+
+							<ul className={classes.list}>
+								<li>Samsung Ultra Desktop</li>
+								<li>$600</li>
+								<li ><span>5/5</span></li>
+								<li>1080p</li>
+								<li>LED</li>
+							</ul>
+						</SwiperSlide>
+						<SwiperSlide className={classes.product}>
+							<EqualHeightElement name = "image">
+								<div className={classes.top}>
 						
-					</div>
+									<img src="https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg" alt="product image"/>
+									
+								</div>
 
-					<ul className={classes.list}>
-						<li>Samsung Ultra Speed Desktop</li>
-						<li>$600</li>
-						<li ><span>5/5</span></li>
-						<li>1080p</li>
-						<li>LED</li>
-					</ul>
-				</SwiperSlide>
-				<SwiperSlide className={classes.product}>
-					<div className={classes.top}>
-						<div ></div>
-						<img src="https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg" alt="product image"/>
+							</EqualHeightElement>
+							
+
+							<ul className={classes.list}>
+								<li>Samsung Ultra Desktop</li>
+								<li>$600</li>
+								<li ><span>5/5</span></li>
+								<li>1080p</li>
+								<li>LED</li>
+							</ul>
+						</SwiperSlide>
+						<SwiperSlide className={classes.product}>
+							<EqualHeightElement name = "image">
+								<div className={classes.top}>
 						
-					</div>
+									<img src="https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg" alt="product image"/>
+									
+								</div>
 
-					<ul className={classes.list}>
-						<li>Samsung Ultra Speed Desktop</li>
-						<li>$600</li>
-						<li ><span>5/5</span></li>
-						<li>1080p</li>
-						<li>LED</li>
-					</ul>
-				</SwiperSlide>
-				<SwiperSlide className={classes.product}>
-					<div className={classes.top}>
-						<div ></div>
-						<img src="https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg" alt="product image"/>
-						
-					</div>
+							</EqualHeightElement>
+							
 
-					<ul className={classes.list}>
-						<li>Samsung Ultra Speed Desktop</li>
-						<li>$600</li>
-						<li ><span>5/5</span></li>
-						<li>1080p</li>
-						<li>LED</li>
-					</ul>
-				</SwiperSlide>
-			</Swiper>
-	
+							<ul className={classes.list}>
+								<li>Samsung Ultra Desktop</li>
+								<li>$600</li>
+								<li ><span>5/5</span></li>
+								<li>1080p</li>
+								<li>LED</li>
+							</ul>
+						</SwiperSlide>
+					</Swiper>
+			</EqualHeight>
+
 
 			
 	</div>
+			
+		</div>
+
     )
 }
 
