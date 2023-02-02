@@ -24,25 +24,6 @@
  
 }
 
-
-
-.content .categorys a{
-  display: inline-flex;
-  align-items: center;
-  line-height: 1;
-  text-decoration: none;
-  font-size: 0.85rem;
-  background-color: #E9E5FC;
-  padding: 0.5625rem;
-  border-radius: 0.5rem;
-  transition: background-color 0.2s;
-  margin-right: 0.25rem;
-}
-.content .category a:hover {
-  text-decoration: underline;
-  background-color: black;
-}
-
 .content .title {
   margin: 0.75rem 0;
   font-size: 1.314rem;
