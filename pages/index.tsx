@@ -1,5 +1,5 @@
 import PostCardGrid from "@/components/common/PostCardGrid";
-import Post from "@/components/post/Post";
+import { PartialPost } from "@/lib/graphql/post";
 
 
 
@@ -59,18 +59,28 @@ const posts = [
 ];
 
 
+export type PostCardProps = {
+  posts : PartialPost[]
+}
 
 
-
-function Homepage(){
+function Homepage({posts} : PostCardProps){
   return (
     <>
       <PostCardGrid posts={posts}/>
-      <Post/>
     </>
-    
+      
   )
 }
 
+
+export async function getStaticProps(){
+    return  {
+      props: {
+        posts
+      },
+      revalidate: 3600
+    }
+}
 
 export default Homepage
