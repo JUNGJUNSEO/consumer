@@ -6,10 +6,10 @@ import { isPurpleAtom } from "@/lib/atom";
 
 function SearchInput() {
 
-    const isPurple = useRecoilValue(isPurpleAtom)
-
+    // const isPurple = useRecoilValue(isPurpleAtom)
+    // style={isPurple ? {border: "solid #734B87"}: {}}
     return (
-        <form className={classes.form} style={isPurple ? {border: "solid #734B87"}: {}}>
+        <form className={classes.form}>
             <MdSearch/>
             <input type="text" placeholder="비교 상품 검색"></input>
         </form>
