@@ -1,7 +1,12 @@
 .block {
+    width: 800px;
+    margin: 5.5rem auto 0 auto;
+}
 
-    display: flex;
-    justify-content: center;
-
-
+@media (max-width: 1024px) {
+    .block{
+        margin-top: 2rem;
+        width: 100%;
+    }
+    
 }
