@@ -5,8 +5,8 @@ async function handler(req :NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {
 
         const data = req.body
-
-        const client = await MongoClient.connect('mongodb+srv://JUNGJUNSEO:uDGVNawMEbycsqyt@cluster0.qz2bq.mongodb.net/tables?retryWrites=true&w=majority');
+        process.env.DB_URL
+        const client = await MongoClient.connect(process.env.DB_URL);
         const db = client.db();
 
         const tableCollection = db.collection('tables')
