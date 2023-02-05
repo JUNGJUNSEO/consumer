@@ -1,0 +1,92 @@
+
+
+
+.table {
+    margin: 20px 0;
+    border-collapse: collapse;
+    width: 100%;
+
+
+}
+
+
+  .imageColumn {
+    width: 150px;
+    text-align: center;
+  }
+  
+  .dataColumn {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .imageColumn,
+  .dataColumn{
+    background-color: white;
+    position: relative;
+    z-index: 1;
+  }
+
+.table th {
+    padding: 10px;
+    border-bottom: 2px solid #ddd;
+  }
+  
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+  }
+  
+.table-cell{
+  transition: all 0.5s ease-in-out;
+}
+    
+    .animateNext {
+    animation: slideRight 0.5s ease-in-out;
+    }
+    
+    .animatePrev {
+    animation: slideLeft 0.5s ease-in-out;
+    }
+    
+    @keyframes slideRight {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0%);
+      }
+    }
+    
+    @keyframes slideLeft {
+    from {
+    transform: translateX(-100%);
+    }
+    to {
+    transform: translateX(0%);
+    }
+    }
+  
+  .nav {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .prevBtn,
+  .nextBtn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #ddd;
+    cursor: pointer;
+  }
+  
+  .prevBtn:hover,
+  .nextBtn:hover {
+    background-color: #ccc;
+  }
+
+  .display {
+    display: table-cell;
+  }
