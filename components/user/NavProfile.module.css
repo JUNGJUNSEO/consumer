@@ -1,0 +1,29 @@
+.container {
+
+}
+
+.navBar {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #e7e7e9;
+    padding: 30px 0;
+}
+
+.navBar li {
+    margin-right: 30px;
+}
+
+.navBar li a {
+    color: #6e6d7a
+}
+
+.label {
+    padding-right: 4px;
+}
+
+@media (min-width: 768px) {
+  
+    .container {
+        margin: 0 30px;
+    }
+}
