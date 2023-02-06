@@ -42,8 +42,12 @@
   transition: all 0.5s ease-in-out;
 }
     
-    .animateNext {
-    animation: slideRight 0.5s ease-in-out;
+    .animateNextIn {
+      display: table-cell;
+      animation: slideRight 0.5s ease-in-out;
+    }
+    .animateNextOut {
+      display: none;
     }
     
     .animatePrev {
@@ -62,6 +66,7 @@
     @keyframes slideLeft {
     from {
     transform: translateX(-100%);
+    
     }
     to {
     transform: translateX(0%);
@@ -89,4 +94,19 @@
 
   .display {
     display: table-cell;
+  }
+
+
+.fadeOut {
+  animation: fadeOut 0.5s ease-in-out;
+  display: block;
+}
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
