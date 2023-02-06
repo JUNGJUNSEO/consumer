@@ -63,9 +63,10 @@ const ProductsComparisonTable: React.FC = () => {
     const showPrevBtn = currentProduct > 0
     const showNextBtn = currentProduct < products.length - displayCount
     
+    
     const handlePrev = () => {
 
-        setCurrentProduct(prevProduct => prevProduct - 1);  
+      setCurrentProduct(prevProduct => prevProduct - 1);  
 
       };
       
@@ -75,14 +76,17 @@ const ProductsComparisonTable: React.FC = () => {
 
       setCurrentProduct(prevProduct => prevProduct + 1);
 
+
       tableCells.forEach(element => {
         element.classList.toggle(styles.animateNext)
+ 
       })
 
       setTimeout(() => {
         tableCells.forEach(element => {
           element.classList.toggle(styles.animateNext)
         })
+
 
       }, 500);
     }
@@ -94,15 +98,19 @@ const ProductsComparisonTable: React.FC = () => {
             <tr>
               <th className={styles.imageColumn} />
               {products
-                .slice(currentProduct, currentProduct + displayCount)
-                .map((product) => (
-                  <th 
+                .map((product, index) => {
+
+                  const shouldShow = currentProduct <= index && index < currentProduct + displayCount
+                
+                  return(
+                  <th
+                    style={{display: shouldShow ? "table-cell" : "none" }}
                     className="table-cell" 
                     key={product.id}
                   >
                     {product.name}
                   </th>
-                ))
+                )})
               }
             </tr>
           </thead>
