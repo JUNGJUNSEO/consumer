@@ -1,7 +1,4 @@
 import PostCardGrid from "@/components/common/PostCardGrid";
-import Example from "@/components/post/Example";
-import HorizontalTableSlider from "@/components/post/HorizontalTableSlider";
-import MultipleRows from "@/components/post/MultipleRows";
 import ProductsComparisonTable from "@/components/post/ProductsComparisonTable";
 import { PartialPost } from "@/lib/graphql/post";
 
@@ -73,8 +70,6 @@ function Homepage({posts} : PostCardProps){
     <>
       <PostCardGrid posts={posts}/>
       <ProductsComparisonTable/>
-      <Example/>
-      <MultipleRows/>
     </>
       
   )
