@@ -1,0 +1,23 @@
+.form input {
+  width: 100%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border-bottom: 2px solid #cdcecf;
+  background-color: whitesmoke;
+  
+}
+
+.errorText {
+  color: red;
+  font-size: 0.5rem;
+}
+
+
+
+
+
+/* .form button:disabled {
+  background: #2A2A2A;
+  color: #CED4DA;
+  cursor: default;
+} */
