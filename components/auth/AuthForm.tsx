@@ -1,9 +1,10 @@
 import classes from "./AuthForm.module.css"
-import EmailForm from "./EmailForm"
+import LoginForm from "./LoginForm"
 import ReactDOM from "react-dom"
 import { Fragment, PropsWithChildren } from "react"
 import AuthSocialButtons from "./AuthSocialButtons"
 import { MdClose } from 'react-icons/md';
+import JoinForm from "./JoinForm"
 
 interface AuthFormProps {
     onToggleClick : () => void
@@ -32,7 +33,8 @@ function AuthForm(props:PropsWithChildren<AuthFormProps>){
                             <h2>{modeText}</h2>
                             <section>
                                 <h4>이메일로 {modeText}</h4>
-                                <EmailForm/>
+                                {mode === "LOGIN" ? <LoginForm/> : <JoinForm/>}
+                                
                             </section>
                             <section>
                                 <h4>소셜 계정으로 {modeText}</h4>
@@ -43,8 +45,8 @@ function AuthForm(props:PropsWithChildren<AuthFormProps>){
                         <div className={classes.foot}>
                             <span>
                                 {mode === "LOGIN" 
-                                    ? "계정이 이미 있으신가요?"
-                                    :  "아직 회원이 아니신가요?"
+                                    ? "아직 회원이 아니신가요?"
+                                    : "계정이 이미 있으신가요?"
                                 }   
                             </span>
                             <div onClick={props.onToggleClick}>
