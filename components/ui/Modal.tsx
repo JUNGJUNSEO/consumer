@@ -3,12 +3,12 @@ import ReactDOM from "react-dom"
 import classes from './Modal.module.css'
 
 interface ModalProps {
-    onClose : () => void
+    onCloseAuthModal : () => void
 }
 
 const BackDrop = (props : ModalProps) => {
     return (
-        <div className={classes.backdrop}  onClick={props.onClose}></div>
+        <div className={classes.backdrop}  onClick={props.onCloseAuthModal}></div>
     )
 }
 
@@ -23,7 +23,7 @@ const Modal = (props : PropsWithChildren<ModalProps>) => {
   
     return (
         <Fragment>
-            {ReactDOM.createPortal(<BackDrop onClose = {props.onClose}/>, selectedElement)}
+            {ReactDOM.createPortal(<BackDrop onCloseAuthModal = {props.onCloseAuthModal}/>, selectedElement)}
         </Fragment>
     )
 
