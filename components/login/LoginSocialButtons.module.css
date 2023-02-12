@@ -1,8 +1,0 @@
-.block {
-    display: flex;
-    flex-direction: column;
-}
-
-.block button {
-    margin-bottom: 0.3rem;
-}
