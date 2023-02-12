@@ -1,6 +1,5 @@
 .container {
     padding: 28px 0 0 0;
-    
 }
 
 .avatar img {
@@ -10,13 +9,15 @@
 }
 
 .userName {
-    font-size: 24px;
+    font-size: 1.25rem;
     font-weight: 700;
     color: #0d0c22;
-    margin: 10px 0 5px 0;
+    margin: 10px 0 6px 0;
 }
 .location {
-    margin-bottom: 5px;
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+
 }
 
 @media (min-width: 768px) {
@@ -47,6 +48,7 @@
     }
     
     .location {
+        font-size: 1rem;
         margin-bottom: 0;
     }
     
