@@ -4,12 +4,13 @@ import ReactDOM from "react-dom"
 import { Fragment, PropsWithChildren } from "react"
 import AuthSocialButtons from "./AuthSocialButtons"
 import { MdClose } from 'react-icons/md';
-import JoinForm from "./JoinForm"
+import JoinButton from "./JoinButton"
 
 interface AuthFormProps {
     onToggleClick : () => void
     onCloseAuthModal: () => void
     mode: string
+   
 }
 
 
@@ -32,8 +33,8 @@ function AuthForm(props:PropsWithChildren<AuthFormProps>){
                         <div className={classes.body}>
                             <h2>{modeText}</h2>
                             <section>
-                                <h4>이메일로 {modeText}</h4>
-                                {mode === "LOGIN" ? <LoginForm/> : <JoinForm/>}
+                                <h4>계정으로 {modeText}</h4>
+                                {mode === "LOGIN" ? <LoginForm/> : <JoinButton/>}
                                 
                             </section>
                             <section>
