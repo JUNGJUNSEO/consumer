@@ -1,6 +1,5 @@
 import classes from "./PostCard.module.css"
 import { MdComment} from "react-icons/md"
-import {FaSlackHash} from "react-icons/fa"
 import {AiFillHeart} from "react-icons/ai"
 import { PartialPost } from "@/lib/graphql/post"
 import { useRouter } from "next/router"
