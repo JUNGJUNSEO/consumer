@@ -1,6 +1,6 @@
 .block {
-    width: 800px;
     margin: 5.5rem auto 0 auto;
+
 }
 
 @media (max-width: 1024px) {
