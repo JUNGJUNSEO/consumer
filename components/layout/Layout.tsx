@@ -10,14 +10,14 @@ import RoundButton from "../ui/Button/RoundButton"
 import UserMenu from "./UserMenu"
 import AuthFormContainer from "@/containers/AuthFormContainer"
 
-function Layout({children} : PropsWithChildren) {
+
+
+function Layout(props: PropsWithChildren) {
 
     let router = useRouter()
-    console.log(router.basePath)
     const closeAuthModalHandler = () => {
         router.back()
     }
-    const user = false
 
     return (
         <Fragment>
@@ -28,8 +28,6 @@ function Layout({children} : PropsWithChildren) {
                         <AuthFormContainer onCloseAuthModal = {closeAuthModalHandler}/>
                     }
                 </>
-                
-             
             )}
             <div className={classes.layout}>
                 
@@ -39,7 +37,7 @@ function Layout({children} : PropsWithChildren) {
                         <SearchInput/>
                     </Link>
                 </div>
-                {user ? (
+                {false ? (
                     <div className={classes.user}>
                         <RoundButton>
                             <Link href="/write">
@@ -59,11 +57,15 @@ function Layout({children} : PropsWithChildren) {
                 )}
                 
             </div>
-            <main>{children}</main>
+            <main style={{width: '100vw', height:'100vh'}}>{props.children}</main>
         </Fragment>
         
  
     )
 }
+
+
+
+
 
 export default Layout
