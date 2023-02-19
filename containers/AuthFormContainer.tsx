@@ -14,9 +14,19 @@ function authFormContainer(props: PropsWithChildren<AuthFormContainerProps>){
     const [toggleState, setToggleState] = useState('LOGIN')
 
     const ToggleClickHandler = () => {
-        setToggleState('JOIN')
+        setToggleState(() => {
+            if (toggleState === 'LOGIN') {
+                return 'JOIN'
+            }else{
+                return 'LOGIN'
+            }
+        })
         router.push(`${router.pathname}?modal=join`)
     }
+
+
+
+
 
 
     return (
@@ -24,6 +34,7 @@ function authFormContainer(props: PropsWithChildren<AuthFormContainerProps>){
             onCloseAuthModal = {props.onCloseAuthModal}
             onToggleClick = {ToggleClickHandler}
             mode = {toggleState}
+  
         />
 
     )
