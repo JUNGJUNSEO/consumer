@@ -1,13 +1,15 @@
 import classes from "./Post.module.css"
+import PostBottom from "./PostBottom"
 import PostHead from "./PostHead"
-import Table from "./Table"
+import ProductsComparisonTable from "./ProductsComparisonTable"
 
 function Post() {
 
     return (
         <div className={classes.block}>
             <PostHead/>
-            <Table/>
+            <ProductsComparisonTable/>
+            <PostBottom/>
         </div>
     )
 }
