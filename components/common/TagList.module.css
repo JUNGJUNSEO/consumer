@@ -1,16 +1,21 @@
 .block a{
-    display: inline-flex;
-    align-items: center;
-    line-height: 1;
-    text-decoration: none;
-    font-size: 0.85rem;
-    background-color: #E9E5FC;
-    padding: 0.5625rem;
-    border-radius: 0.5rem;
-    transition: background-color 0.2s;
-    margin-right: 0.25rem;
-  }
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5625rem;
+  margin-right: 0.25rem;
+  border-radius: 0.2rem;
+  background-color: #fafafa;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
 
 .block a:hover {
-    opacity: 0.85;
-  }
+  opacity: 0.85;
+}
+
+.block a svg {
+  margin-right: 0.1rem;
+}
