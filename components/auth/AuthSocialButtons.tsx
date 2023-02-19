@@ -1,4 +1,4 @@
-import LoginButton from "../ui/Button/LoginButton"
+import LoginButton from "../ui/Button/AuthButton"
 import styles from "./AuthSocialButtons.module.css"
 import {SiNaver, SiKakao, SiKakaotalk} from "react-icons/si"
 function AuthSocialButtons(){
