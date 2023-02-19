@@ -3,8 +3,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 433px;
-  height: 585px;
+  width: 410px;
+  height: 540px;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -56,7 +56,7 @@
 }
 
 .body section {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .foot {
@@ -94,7 +94,4 @@
     margin-bottom: 2.25rem;
   }
 
-  .body section {
-    margin-top: 2.5rem;
-  }
 }
