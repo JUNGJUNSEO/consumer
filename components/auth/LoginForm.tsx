@@ -1,98 +1,115 @@
-import React, { useEffect, useReducer, useState } from "react"
-import LoginButton from "../ui/Button/LoginButton"
+import { useRouter } from "next/router"
+import React, { PropsWithChildren, useReducer, useState } from "react"
+import AuthButton from "../ui/Button/AuthButton"
 import styles from './LoginForm.module.css'
 
-interface stateProps {
-    value: string
-    isValid: boolean | null
+enum ActionType {
+    InputClick = 'INPUT_CLICK',
+    GetError = 'GET_ERROR'
 }
 
-interface actionProps {
-    type: string
-    value: string 
+interface State {
+    isClicked: boolean
+    gotError: boolean
 }
 
-const emailInitailState = {
-    value: '',
-    isValid: false,
+interface Action {
+    type: ActionType
 }
 
-const validateEmail = (email:string) => {
-    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
-    return emailRegex.test(email)
-
-}
-
-const emailReducer = (state: stateProps, action: actionProps) => {
-    switch (action.type) {
-        case 'USER_INPUT':
-            return { value: action.value, isValid: validateEmail(action.value) };
-        case 'INPUT_BLUR':
-            return { value: state.value, isValid: validateEmail(state.value) };
-        default:
-            return emailInitailState
+const reducer = (state: State, action:Action) => {
+    switch (action.type){
+        case ActionType.InputClick:
+            return {
+                ...state,
+                isClicked: true,
+            }
+        case ActionType.GetError:
+            return {
+                ...state,
+                isClicked: false,
+                gotError: true
+            }
     }
-};
+}
 
+const LoginForm = () => {
 
-function LoginForm () {
+    const [username, setUsernameState] = useState('')
+    const [password, setPasswordState] = useState('')
+    const [usernameState, dispatchUsername] = useReducer(reducer, { isClicked: false, gotError: false })
+    const [passwardError, dispatchPassward] = useReducer(reducer, { isClicked: false, gotError: false })
+    const router = useRouter()
 
-    const [formIsValid, setFormIsValid] = useState(false);
-    const [emailState, dispatchEmail] = useReducer(emailReducer, emailInitailState)
-    
-    const {value: emailValue, isValid : emailIsValid } = emailState
-
-    useEffect(() => {
-        setFormIsValid(emailIsValid)
-    }, [emailIsValid])
-
-    const emailChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        dispatchEmail({type: 'USER_INPUT', value: event.target.value})
+    const userChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setUsernameState(event.target.value)
     }
 
-    const validateEmailHandler = () => {
-        dispatchEmail({type: 'INPUT_BLUR', value: ''})
+    const passwardChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setPasswordState(event.target.value)
     }
 
-    const submitHandler = (event : React.FormEvent<HTMLFormElement>) => {
+    const clickUsernameHandler = () => {
+        dispatchUsername({type: ActionType.InputClick})
+    }
+
+    const clickPasswardHandler = () => {
+        dispatchPassward({type: ActionType.InputClick})
+    }
+
+    const submitHandler = async(event : React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+
+        const data = {username, password}
+
+        const response =  await fetch('/api/login', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+        })
+
+        if (response.status === 404) {
+            dispatchUsername({type: ActionType.GetError})
+        }else if (response.status === 401) {
+            dispatchPassward({type: ActionType.GetError})
+        }else if (response.status === 200) {
+            router.push('/')
+        }   
     }
 
     return (
-
         <form className={styles.form} onSubmit={submitHandler}>
             <div>
                 <input 
-                    type="email" 
-                    value={emailValue} 
-                    onChange={emailChangeHandler} 
-                    onBlur = {validateEmailHandler}
-                    placeholder = "이메일 주소를 입력하세요"
+                    type="text" 
+                    value={username} 
+                    onChange={userChangeHandler} 
+                    placeholder = "아이디를 입력하세요"
+                    onClick={clickUsernameHandler}
                 />
-                {/* {!emailIsValid  && (
-                    <p className={styles.errorText}> 유요한 Email 주소를 입력해 주세요.</p>
-                )} */}
+                {!usernameState.isClicked && usernameState.gotError && <p>해당 아이디가 존재하지 않습니다.</p>}
             </div>
   
             <div>
                 <input 
                     type="passward" 
-                    value={emailValue} 
-                    onChange={emailChangeHandler} 
-                    onBlur = {validateEmailHandler}
+                    value={password} 
+                    onChange={passwardChangeHandler} 
                     placeholder = "비밀번호를 입력하세요"
+                    onClick={clickPasswardHandler}
                 />
+                {!passwardError.isClicked && passwardError.gotError && <p>비밀번호가 틀립니다.</p>}
             </div>
             <div>
-                <LoginButton color = {"#734B87"}>
+                <AuthButton>
                     로그인
-                </LoginButton>
+                </AuthButton>
             </div>
-            
         </form>
-
     )
 }
-
 
 export default LoginForm
