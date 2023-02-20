@@ -7,6 +7,10 @@ import {GiBackwardTime} from "react-icons/gi"
 
 function UserMenu(){
 
+    const handleLogout = async() => {
+        await fetch('/api/logout')
+    }
+
     return (
         <div className={classes.block}>
             <ul className={classes.wrapper}>
@@ -29,8 +33,8 @@ function UserMenu(){
                     최근에 읽은 포스트
                 </li>
                 <hr></hr>
-                <li>
-                    <SlLogout/>
+                <li onClick={handleLogout}>
+                  <SlLogout/>
                     로그아웃
                 </li>
 
