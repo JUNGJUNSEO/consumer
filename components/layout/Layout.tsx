@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
-import { Fragment, PropsWithChildren } from "react"
-import classes from './Layout.module.css'
+import { PropsWithChildren } from "react"
+import styles from './Layout.module.css'
 import SearchInput from "../search/SearchInput"
 import Modal from "../ui/Modal"
 import Link from 'next/link';
@@ -10,17 +10,23 @@ import RoundButton from "../ui/Button/RoundButton"
 import UserMenu from "./UserMenu"
 import AuthFormContainer from "@/containers/AuthFormContainer"
 
+interface LayoutProps {
+    user: {
+        id: string
+        loggedIn: boolean
+    }
+}
 
 
-function Layout(props: PropsWithChildren) {
-
+function Layout(props: PropsWithChildren<LayoutProps>) {
+   
     let router = useRouter()
     const closeAuthModalHandler = () => {
         router.back()
     }
 
     return (
-        <Fragment>
+        <>
             {router.query.modal && (
                 <>
                     <Modal onCloseAuthModal={closeAuthModalHandler} />
@@ -29,16 +35,16 @@ function Layout(props: PropsWithChildren) {
                     }
                 </>
             )}
-            <div className={classes.layout}>
+            <div className={styles.layout}>
                 
                 <Logo/>
-                <div className={classes.search}>
+                <div className={styles.search}>
                     <Link href={`${router.pathname}?modal=search`}  scroll={false}>
                         <SearchInput/>
                     </Link>
                 </div>
-                {false ? (
-                    <div className={classes.user}>
+                {props.user.loggedIn ? (
+                    <div className={styles.user}>
                         <RoundButton>
                             <Link href="/write">
                                 비교 상품 만들기
@@ -57,8 +63,8 @@ function Layout(props: PropsWithChildren) {
                 )}
                 
             </div>
-            <main style={{width: '100vw', height:'100vh'}}>{props.children}</main>
-        </Fragment>
+            <main className={styles.main}>{props.children}</main>
+        </>
         
  
     )
