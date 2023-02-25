@@ -1,4 +1,5 @@
 import classes from "./Post.module.css"
+import PostAction from "./PostAction"
 import PostBottom from "./PostBottom"
 import PostComment from "./PostComment"
 import PostHead from "./PostHead"
@@ -8,6 +9,7 @@ function Post() {
 
     return (
         <div className={classes.block}>
+            <PostAction/>
             <PostHead/>
             <ProductsComparisonTable/>
             <PostBottom/>
