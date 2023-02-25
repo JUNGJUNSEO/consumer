@@ -1,0 +1,43 @@
+
+
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.content {
+    width: 800px;
+    height: 540px;
+    padding: 1.5rem;
+    background-color: white;
+    position: relative;
+}
+
+.content h4 {
+    font-size: 1.3125rem;
+    margin-bottom: 3rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 1.5rem;
+    width: 95%;
+}
+
+.button {
+    cursor: pointer;
+
+}
