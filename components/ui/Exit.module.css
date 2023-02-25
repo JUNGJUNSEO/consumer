@@ -1,0 +1,13 @@
+.exit {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+    color: #868E96
+}
+
+
+
+.exit svg {
+    cursor: pointer;
+}
+  
