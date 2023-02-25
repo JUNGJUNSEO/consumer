@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import React, { PropsWithChildren, useReducer, useState } from "react"
+import React, { useReducer, useState } from "react"
 import AuthButton from "../ui/Button/AuthButton"
 import styles from './LoginForm.module.css'
 
@@ -30,6 +30,8 @@ const reducer = (state: State, action:Action) => {
                 isClicked: false,
                 gotError: true
             }
+        default:
+            return state;
     }
 }
 
