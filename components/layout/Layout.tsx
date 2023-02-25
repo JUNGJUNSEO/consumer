@@ -1,5 +1,4 @@
-import { useRouter } from "next/router"
-import { PropsWithChildren } from "react"
+import { PropsWithChildren, useState } from "react"
 import styles from './Layout.module.css'
 import SearchInput from "../search/SearchInput"
 import Modal from "../ui/Modal"
@@ -19,59 +18,55 @@ interface LayoutProps {
 
 
 function Layout(props: PropsWithChildren<LayoutProps>) {
+
+    const [showModal, setShowModal] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
    
-    let router = useRouter()
-    const closeAuthModalHandler = () => {
-        router.back()
+    const modalHandler = () => {
+        setShowModal((pre) => !pre);
+    }
+
+    const menuHandler = () => {
+        setShowMenu((pre) => !pre);
     }
 
     return (
         <>
-            {router.query.modal && (
+            {showModal && (
                 <>
-                    <Modal onCloseAuthModal={closeAuthModalHandler} />
-                    {(router.query.modal === "login" || router.query.modal ==="join") && 
-                        <AuthFormContainer onCloseAuthModal = {closeAuthModalHandler}/>
-                    }
+                    <Modal onCloseAuthModal={modalHandler} />
+                    <AuthFormContainer onCloseAuthModal = {modalHandler}/>
                 </>
             )}
             <div className={styles.layout}>
                 
                 <Logo/>
                 <div className={styles.search}>
-                    <Link href={`${router.pathname}?modal=search`}  scroll={false}>
-                        <SearchInput/>
-                    </Link>
+                    <SearchInput/>
                 </div>
                 {props.user.loggedIn ? (
                     <div className={styles.user}>
                         <RoundButton>
-                            <Link href="/write">
+                            <Link href="/new-post">
                                 비교 상품 만들기
                             </Link>
                         </RoundButton>
-                        <UserIcon/>
-                        <UserMenu/>
+                        <UserIcon onClickMenu={menuHandler}/>
+                        {showMenu && <UserMenu/>}
         
                     </div>
                 ) : (
                     <RoundButton>
-                        <Link href={`${router.pathname}?modal=login`} as="/login" scroll={false}>
+                        <div onClick={modalHandler}>
                             로그인
-                        </Link>
+                        </div>
                     </RoundButton>
                 )}
                 
             </div>
             <main className={styles.main}>{props.children}</main>
         </>
-        
- 
     )
 }
-
-
-
-
 
 export default Layout
