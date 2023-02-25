@@ -15,13 +15,7 @@
     flex: 1;
 }
 
-.search a {
-    all:unset;
-    display: flex;
-    align-items: center;
-    width: 100%;
-    margin: 0px 40px;
-}
+
 
 .user {
     display: flex;
