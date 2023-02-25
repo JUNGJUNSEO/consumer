@@ -13,22 +13,10 @@
   z-index: 100;
   background-color: white;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.09);
-  
 }
 
 .block div {
   width: 100%;
-}
-
-.exit {
-  display: flex;
-  justify-content: flex-end;
-  font-size: 1.5rem;
-  color: #868E96
-}
-
-.exit svg {
-  cursor: pointer;
 }
 
 .form {
