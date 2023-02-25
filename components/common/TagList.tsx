@@ -12,7 +12,7 @@ function TagList({tags}:TagListProps) {
         <div className={classes.block}>
             {tags.map((tag, index) =>  (
                 <a href="#0" key={index}>
-                    <FaSlackHash/>
+                    {/* <FaSlackHash/> */}
                     <i>{tag}</i>
                 </a>
             ))}
