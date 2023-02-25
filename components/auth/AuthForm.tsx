@@ -5,6 +5,7 @@ import { Fragment, PropsWithChildren } from "react"
 import AuthSocialButtons from "./AuthSocialButtons"
 import { MdClose } from 'react-icons/md';
 import JoinButton from "./JoinButton"
+import Exit from "../ui/Exit"
 
 interface AuthFormProps {
     onToggleClick : () => void
@@ -26,9 +27,7 @@ function AuthForm(props:PropsWithChildren<AuthFormProps>){
         <Fragment>
             {ReactDOM.createPortal(
                 (<div className={classes.block}>
-                    <div className={classes.exit}>
-                        <MdClose onClick = {props.onCloseAuthModal}/>
-                    </div>
+                    <Exit onClick = {props.onCloseAuthModal}/>
                     <div className={classes.form}>
                         <div className={classes.body}>
                             <h2>{modeText}</h2>
