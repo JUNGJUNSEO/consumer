@@ -8,9 +8,6 @@ interface AuthFormContainerProps {
 
 function authFormContainer(props: PropsWithChildren<AuthFormContainerProps>){
 
-
-    const router = useRouter()
-
     const [toggleState, setToggleState] = useState('LOGIN')
 
     const ToggleClickHandler = () => {
@@ -21,7 +18,6 @@ function authFormContainer(props: PropsWithChildren<AuthFormContainerProps>){
                 return 'LOGIN'
             }
         })
-        router.push(`${router.pathname}?modal=join`)
     }
 
 
