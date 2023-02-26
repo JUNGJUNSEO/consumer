@@ -5,21 +5,25 @@ import styles from "./PublishModal.module.css"
 import RoundButton from "@/components/ui/Button/RoundButton"
 
 interface PublishModalProps {
+    tableData: any[][]
     onClick: () => void;
     selectedProduct: number;
     onClickProduct: (id:number) => void;
     reason: string
     onChangeReason: (event: React.ChangeEvent<HTMLTextAreaElement>) => void
     onChangeThumb: (event: React.ChangeEvent<HTMLInputElement>) => void
+    
 }
 
 const PublishModal : FC<PublishModalProps> = ({ 
+    tableData,
     onClick, 
     selectedProduct, 
     onClickProduct, 
     onChangeReason, 
     reason, 
     onChangeThumb
+
 }) => {
 
     const [currentPage, setCurrentPage] = useState(0)
@@ -42,7 +46,7 @@ const PublishModal : FC<PublishModalProps> = ({
                 {currentPage === 0 && 
                     <>
                         <h4>사용 경험이 가장 좋았던 제품을 선택해 주세요</h4>
-                        <ProductSelect selectedProduct={selectedProduct} onClickProduct={onClickProduct} />
+                        <ProductSelect tableData={tableData} selectedProduct={selectedProduct} onClickProduct={onClickProduct} />
                     </>
                 }
                 {currentPage === 1 && 
