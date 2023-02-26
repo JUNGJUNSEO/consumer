@@ -10,15 +10,17 @@ const products = [
 ];
 
 interface ProductSelectProps{
+  tableData: any[][]
   selectedProduct: number;
   onClickProduct: (id:number) => void
 
 }
 
 
-const ProductSelect: FC<ProductSelectProps> = ({selectedProduct, onClickProduct}) => {
+const ProductSelect: FC<ProductSelectProps> = ({selectedProduct, onClickProduct, tableData}) => {
 
 
+    
     return (
       <div className={styles.block}>
         <div className={styles.products}>
