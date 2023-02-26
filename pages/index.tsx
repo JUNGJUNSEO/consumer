@@ -1,6 +1,9 @@
 import PostCardGrid from "@/components/common/PostCardGrid";
 import ProductsComparisonTable from "@/components/post/ProductsComparisonTable";
+import dbConnect from "@/lib/dbConnect";
 import { PartialPost } from "@/lib/graphql/post";
+import { middleware } from "@/lib/middleware";
+import { GetServerSideProps } from "next";
 
 
 
@@ -69,20 +72,18 @@ function Homepage({posts} : PostCardProps){
   return (
     <>
       <PostCardGrid posts={posts}/>
-      <ProductsComparisonTable/>
     </>
       
   )
 }
 
 
-export async function getStaticProps(){
+export const getServerSideProps: GetServerSideProps = async(context) => {
+  await dbConnect();
     return  {
-      props: {
-        posts
-      },
-      revalidate: 3600
+      props: {posts}
     }
 }
+
 
 export default Homepage
