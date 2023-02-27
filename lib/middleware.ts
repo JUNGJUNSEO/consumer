@@ -7,19 +7,11 @@ export const middleware = async (req: NextRequest) => {
   const res = NextResponse.next();
   const session = await getIronSession(req, res, sessionOptions);
 
-  const { user } = session;
 
-  console.log("from middleware", { user });
-
-
-  if (!user?.loggedIn) {
-    // unauthorized to see pages inside admin/
-    return NextResponse.redirect(new URL('/unauthorized', req.url)) // redirect to /unauthorized page
+  if (!session.user?.loggedIn && req.url.startsWith('/write')) {
+    return NextResponse.redirect('/404');
   }
 
   return res;
 };
 
-export const config = {
-  matcher: "/admin",
-};
