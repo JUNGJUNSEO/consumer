@@ -4,6 +4,7 @@ import {CgProfile} from"react-icons/cg"
 import {BsCardHeading} from"react-icons/bs"
 import {AiFillHeart} from "react-icons/ai"
 import {GiBackwardTime} from "react-icons/gi"
+import {MdPostAdd} from "react-icons/md"
 
 function UserMenu(){
 
@@ -18,7 +19,11 @@ function UserMenu(){
                     <CgProfile/>
                     내 프로필
                 </li>
-                
+                <hr></hr>
+                <li>
+                    <MdPostAdd/>
+                    비교 상품 만들기
+                </li>
                 <hr></hr>
                 <li>
                     <BsCardHeading/>
