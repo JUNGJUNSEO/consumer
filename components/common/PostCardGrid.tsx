@@ -1,16 +1,17 @@
 import classes from "./PostCardGrid.module.css"
 import { PartialPost } from "@/lib/graphql/post"
 import PostCard from "./PostCard"
+import { IPost } from "@/lib/models/post"
 
 export type PostCardGridProp = {
-    posts: PartialPost[]
+    posts: IPost[]
 }
 
 
 function PostCardGrid({posts} : PostCardGridProp){
 
     return (
-        <div className={classes.block}>
+        <div className={classes.container}>
             {posts.map((post) => {
                 return (
                     <PostCard 
