@@ -9,6 +9,7 @@ interface IUserDocument extends Document {
   password?: string;
   name?: string;
   location?: string;
+  posts: mongoose.Schema.Types.ObjectId[];
 }
 
 interface IUserModel extends Model<IUserDocument> {}
@@ -21,6 +22,11 @@ const userSchema: Schema<IUserDocument, IUserModel> = new mongoose.Schema({
   password: String,
   name: String,
   location: String,
+  posts: [{
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'post',
+  }]
 });
 
 userSchema.pre<IUserDocument>('save', function (next) {
