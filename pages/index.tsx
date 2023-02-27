@@ -3,6 +3,7 @@ import ProductsComparisonTable from "@/components/post/ProductsComparisonTable";
 import dbConnect from "@/lib/dbConnect";
 import { PartialPost } from "@/lib/graphql/post";
 import { middleware } from "@/lib/middleware";
+import Post, { IPost } from "@/lib/models/post";
 import { GetServerSideProps } from "next";
 
 
@@ -64,7 +65,7 @@ const posts = [
 
 
 export type PostCardProps = {
-  posts : PartialPost[]
+  posts : IPost[]
 }
 
 
@@ -79,10 +80,21 @@ function Homepage({posts} : PostCardProps){
 
 
 export const getServerSideProps: GetServerSideProps = async(context) => {
-  await dbConnect();
-    return  {
-      props: {posts}
-    }
+
+  try {
+    await dbConnect()
+    const posts: IPost[] = await Post.find({})
+
+    return {
+      props: {
+        posts: JSON.parse(JSON.stringify(posts)),
+      },
+    };
+  } catch (error){
+    console.log(error)
+  }
+
+
 }
 
 
