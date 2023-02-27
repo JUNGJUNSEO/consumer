@@ -17,7 +17,7 @@ interface LayoutProps {
 }
 
 
-function Layout(props: PropsWithChildren<LayoutProps>) {
+function Layout({ user, children }: PropsWithChildren<LayoutProps>) {
 
     const [showModal, setShowModal] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
@@ -39,32 +39,30 @@ function Layout(props: PropsWithChildren<LayoutProps>) {
                 </>
             )}
             <div className={styles.layout}>
-                
                 <Logo/>
                 <div className={styles.search}>
                     <SearchInput/>
                 </div>
-                {props.user.loggedIn ? (
+                {user.loggedIn ? (
                     <div className={styles.user}>
-                        <RoundButton>
-                            <Link href="/new-post">
-                                비교 상품 만들기
-                            </Link>
-                        </RoundButton>
+                        <div className={styles.newPost}>
+                            <RoundButton >
+                                <Link href="/new-post">비교 상품 만들기</Link>
+                            </RoundButton>
+                        </div>
+
                         <UserIcon onClickMenu={menuHandler}/>
                         {showMenu && <UserMenu/>}
         
                     </div>
                 ) : (
                     <RoundButton>
-                        <div onClick={modalHandler}>
-                            로그인
-                        </div>
+                        <div onClick={modalHandler}>로그인</div>
                     </RoundButton>
                 )}
                 
             </div>
-            <main className={styles.main}>{props.children}</main>
+            <main className={styles.main}>{children}</main>
         </>
     )
 }
