@@ -41,14 +41,7 @@ const WriteTable: React.FC<WriteTableProps> = ({
                                     return (
                                         <td key={colIndex}>
                                             {colIndex === 0 ? (
-                                                <input 
-                                                    className={styles.inputText}
-                                                    type="text"
-                                                    name={`${rowIndex}-${colIndex}`}
-                                                    value={tableData[rowIndex][colIndex]}
-                                                    onChange={onChange}
-                                                    
-                                                />
+                                                <div>사진</div>
                                             ) : (
                                                 <div className={styles.inputFile}>
                                                     <div id={`${rowIndex}-${colIndex}-input`}>
