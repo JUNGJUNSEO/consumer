@@ -1,6 +1,7 @@
 // import TableForm from "@/components/post/TableForm";
 
-import TableForm from "@/components/write/TableForm"
+
+import WriteFormContainer from "@/containers/write/WriteFormContainer";
 
 function NewPostPage() {
 
@@ -19,7 +20,7 @@ function NewPostPage() {
     // } 
 
     return (    
-        <TableForm/>
+        <WriteFormContainer/>
         // <TableForm onAddPost = {addPostHandler}/>
     )
 }
