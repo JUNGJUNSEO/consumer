@@ -62,7 +62,6 @@ function WriteFormContainer() {
         for (let i = 0; i < tableData.length; i++) {
           const row = tableData[i];
           if (i === 0) {
-            formData.append('text', row[0]);
             for (let j = 1; j < row.length; j++) {
               const file = row[j];
               if (file) {
