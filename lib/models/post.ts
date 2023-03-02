@@ -1,24 +1,25 @@
-import mongoose, { Document } from 'mongoose';
+import mongoose from 'mongoose';
+import { IUser } from './user';
 
-export interface IPost extends Document {
+export interface IPost extends mongoose.Document {
   title: string;
   owner_pick: number;
   reason: string;
   post_image: string;
   files: string[];
   text?: string;
-  texts?: string[][];
+  texts?: string[];
   hashtags: string[];
   createdAt: Date;
   meta: {
     likes: number;
     comments_count: number;
   };
-  comments: mongoose.Schema.Types.ObjectId[];
-  owner: mongoose.Schema.Types.ObjectId;
+  comments: mongoose.Types.ObjectId[];
+  owner: IUser['_id'];
 }
 
-const postSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema<IPost>({
   title: {
     type: String,
     required: true,
@@ -67,18 +68,17 @@ const postSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'comment',
+      ref: 'Comment',
     },
   ],
+  
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'user',
+    ref: 'User',
   },
 });
 
-
-
-const Post = mongoose.models.Post ||  mongoose.model<IPost>('Post', postSchema);
+const Post = mongoose.models.Post as mongoose.Model<IPost> ||  mongoose.model<IPost>('Post', postSchema);
 
 export default Post;
