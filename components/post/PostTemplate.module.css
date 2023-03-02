@@ -1,0 +1,12 @@
+.block {
+    margin: 1rem auto 0 auto;
+
+}
+
+@media (max-width: 1024px) {
+    .block{
+        margin-top: 2rem;
+        width: 100%;
+    }
+    
+}
