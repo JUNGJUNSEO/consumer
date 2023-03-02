@@ -6,8 +6,6 @@ import { useState } from "react";
 import TableContainer from "./TableContainer";
 
 function WriteFormContainer() {
-
-
     const [showModal, setShowModal] = useState(false);
     const [title, setTitle] = useState('');
     const [numCols, setNumCols] = useState(3);
@@ -27,11 +25,8 @@ function WriteFormContainer() {
     const [reason, setReason] = useState("")
     const [thumbFile, setThumbFile] = useState(null)
 
-    
-    
-
     const titleChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setTitle(event.target.value)
+      setTitle(event.target.value)
     }
 
     const handleClickProduct = (productId: number) => {
@@ -51,48 +46,45 @@ function WriteFormContainer() {
     }
       
     const handleSubmit = async(event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault()
+      event.preventDefault()
+      console.log('long')
 
-        const formData = new FormData();
-        formData.append('title', title)
-        formData.append('owner_pick', String(selectedProduct))
-        formData.append('reason', reason)
-        formData.append('post_image', thumbFile)
+      const formData = new FormData();
+      formData.append('title', title)
+      formData.append('owner_pick', String(selectedProduct))
+      formData.append('reason', reason)
+      formData.append('post_image', thumbFile)
         
-        for (let i = 0; i < tableData.length; i++) {
-          const row = tableData[i];
-          if (i === 0) {
-            for (let j = 1; j < row.length; j++) {
-              const file = row[j];
-              if (file) {
-                formData.append('files', file);
-              }
+      for (let i = 0; i < tableData.length; i++) {
+        const row = tableData[i];
+        if (i === 0) {
+          for (let j = 1; j < row.length; j++) {
+            const file = row[j];
+            if (file) {
+              formData.append('files', file);
             }
-          } else {
-            const textArr = row.map((value) => (value ? value : ''));
-            formData.append(`texts`, textArr.join(','));
           }
+        } else {
+          const textArr = row.map((value) => (value ? value : ''));
+          formData.append(`texts`, textArr.join(','));
         }
-        
-
-        try {
-            const response = await fetch('/api/upload', {
-              method: 'POST',
-              body: formData,
-            });
-        
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            console.log('Upload success');
-          } catch (e) {
-            console.error('Upload failed', e);
+      }
+      
+      try {
+          const response = await fetch('/api/upload', {
+            method: 'POST',
+            body: formData,
+          });
+      
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
           }
+
+          console.log('Upload success');
+        } catch (e) {
+          console.error('Upload failed', e);
+        }
     }
-
-
-
 
     return (
       <form onSubmit={handleSubmit}>
@@ -119,11 +111,9 @@ function WriteFormContainer() {
           reason={reason}
           onChangeReason={reasonChangeHandler}
           onChangeThumb={ThumbFileHandler}
-
           />
         )}
       </form>
-
     )
 }
 
