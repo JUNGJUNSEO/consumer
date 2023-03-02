@@ -10,9 +10,15 @@ const products= [
   
   ['description', "This is product 1", "This is product 1", "This is product 1", "This is product 1", "This is product 1", "This is product 1"],
 ];
-  
-const ProductsComparisonTable: React.FunctionComponent = () => {
 
+interface ProductsComparisonTableProps {
+  files: string[]
+  texts: string[]
+}
+
+  
+const ProductsComparisonTable: React.FC<ProductsComparisonTableProps> = ({files, texts}) => {
+    console.log(texts)
     const [currentProduct, setCurrentProduct] = React.useState(1);
     const displayCount = 4
     const showPrevBtn = currentProduct > 1
