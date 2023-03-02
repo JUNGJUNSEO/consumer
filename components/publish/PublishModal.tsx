@@ -6,6 +6,7 @@ import RoundButton from "@/components/ui/Button/RoundButton"
 
 interface PublishModalProps {
     tableData: any[][]
+    
     onClick: () => void;
     selectedProduct: number;
     onClickProduct: (id:number) => void;
