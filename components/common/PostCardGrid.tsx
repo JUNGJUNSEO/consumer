@@ -1,5 +1,4 @@
 import classes from "./PostCardGrid.module.css"
-import { PartialPost } from "@/lib/graphql/post"
 import PostCard from "./PostCard"
 import { IPost } from "@/lib/models/post"
 
@@ -14,9 +13,10 @@ function PostCardGrid({posts} : PostCardGridProp){
         <div className={classes.container}>
             {posts.map((post) => {
                 return (
-                    <PostCard 
+                    <PostCard
+                        key = {post._id}
                         post = {post}
-                        key = {post.id}
+                        
                     />
                 )
             })}
