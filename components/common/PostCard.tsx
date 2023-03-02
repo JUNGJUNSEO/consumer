@@ -1,68 +1,73 @@
-import classes from "./PostCard.module.css"
+import styles from "./PostCard.module.css"
 import { MdComment} from "react-icons/md"
 import {AiFillHeart} from "react-icons/ai"
 import { useRouter } from "next/router"
 import TagList from "./TagList"
 import { IPost } from "@/lib/models/post"
-
-
-
+import { formatDate } from "@/lib/utils"
+import Link from "next/link"
 
 export type PostCardProps = {
     post : IPost
 }
 
 function PostCard({post} : PostCardProps){
-
+    const { title, post_image, hashtags, owner, createdAt, meta } = post;
+    const { comments_count, likes } = meta;
+    const { username, avatarUrl, name } = owner
+  
     const router = useRouter()
 
     const showDetailHandler = () => {
-        router.push('/' + post.id)
+        router.push(`/${username}/${title}`);
     }
 
     return (
-        <div className={classes.card}>
-     
-            <div className={classes.image} style={{backgroundImage: `url(${post.post_image})`}} onClick = {showDetailHandler}/>
+        <div className={styles.postCard}>
+            <div 
+                className={styles.image} 
+                style={{backgroundImage: `url(./images/${post_image})`}} 
+                onClick = {showDetailHandler}
+            />
        
-            <div className={classes.content}>
-                <TagList tags = {post.hashtags}/>
-                <div className={classes.title}>
-                    <h3><a href="#0">{post.title}</a></h3>
+            <div className={styles.content}>
+                <TagList tags = {hashtags}/>
+                <div className={styles.title}>
+                    <h3 onClick = {showDetailHandler}>{title}</h3>
                 </div>
             
-                <div className={classes.author}>
-                    <a href="#0">
-                        <img src="/images/deer.png" alt="product image"/>
-                    </a>
+                <div className={styles.author}>
+                    <Link href={"/[userId]"} as={`/${username}`}>
+                        {avatarUrl ? (
+                            <img src={`./images/${avatarUrl}`} alt="product image"/>
+                        ): (
+                            <div className={styles.nameImg}>{name}</div>
+                        )}
+                    </Link>
 
-                    <div className={classes.info}>
-                        <div className={classes.name}><a href="#0" rel="author">by {post.owner}</a></div>
-                        <div className={classes.meta}>
-                            <span>{post.createdAt}</span>
+                    <div className={styles.info}>
+                        <div className={styles.name}>
+                            <Link href={"/[userId]"} as={`/${username}`}>by {username}</Link>
+                        </div>
+                        <div className={styles.meta}>
+                            <span>{formatDate(new Date(createdAt).toISOString())}</span>
                             <div>
                                 <div>
                                     <MdComment/>
-                                    <span>{post.meta.comments_count}</span>
+                                    <span>{comments_count}</span>
                                 </div>
 
                                 <div>
                                     <AiFillHeart/>
-                                    <span>{post.meta.likes}</span>
+                                    <span>{likes}</span>
                                 </div>
 
                             </div>
-                            
-                            
-                                
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
     )
 }
 
