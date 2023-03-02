@@ -1,18 +1,17 @@
-.card {
+.postCard {
   overflow: hidden;
   display: flex;
   flex-direction: column;
   width: 100%;
 	height: auto;
   padding: 1rem;
-  transition: opacity ease-in 0.25s, transform ease-in 0.25s;
+  transition: opacity ease-in 0.25s;
   
 
 }
 
-.card:hover {
+.postCard:hover {
   opacity: 0.85;
-  transform: translateY(-8px);
 }
 
 .image{
@@ -23,19 +22,15 @@
   background-size: cover; 
   background-position: center; 
   border-radius: 0.75rem;
+  cursor: pointer;
 }
 
 .content .title {
   margin: 0.75rem 0;
   font-size: 1.314rem;
   font-weight: bold;
+  cursor: pointer;
 }
-  
-.content .title a {
-  color: black;
-  text-decoration: none;
-}
-
   
 .author {
   display: flex;
@@ -47,7 +42,18 @@
   display: block;
   width: 50px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 50%; 
+}
+
+.nameImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
+  color: white;
   
 }
 
