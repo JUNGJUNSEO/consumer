@@ -23,6 +23,7 @@ const PostTemplate:React.FC<PostTemplateProps> = ({user, post}) => {
             <ProductsComparisonTable
                 files={post.files}
                 texts={post.texts}
+                ownerPick={post.owner_pick}
             />
             <PostBottom/>
             <PostComment/>
