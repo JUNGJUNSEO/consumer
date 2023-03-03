@@ -1,15 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { withSessionRoute } from "@/lib/withSession";
 
-const logoutRoute = (req: NextApiRequest, res: NextApiResponse ) => {
+const logoutRoute = async(req: NextApiRequest, res: NextApiResponse ) => {
   req.session.destroy()
-
-  if (req.url.includes('/write')){
+  
+  if (req.url.includes('/new-post')){
     res.redirect('/');
-  } else{
-    res.redirect('/');
-    // res.status(200).json({ success: true });
   }
+
+  return res.status(200).json({ success: true });
 }
 
 
