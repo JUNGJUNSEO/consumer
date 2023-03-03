@@ -4,11 +4,11 @@ import Post from "@/lib/models/post"
 import multer from 'multer';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { withSessionRoute } from "@/lib/withSession";
-
+import { Request, Response, NextFunction } from 'express';
 
 const upload = multer({
   storage: multer.diskStorage({
-    destination: '.postImages/',
+    destination: './public/images',
     filename: (req, file, cb) => {
       cb(null, `${file.originalname}`);
     },
@@ -38,30 +38,31 @@ const handler = async(req: NextApiRequest, res: NextApiResponse) => {
 
     uploadHandler(req as any, res as any, async(err) => {
   
-      if (err) {
-        
+      if (err) { 
         return res.status(500).send(err.message);
       }
 
-      const postImagePath = req.files.post_image[0].path
-      const filesPaths = req.files.files.map(file => file.path)
-      const {title, owner_pick, reason,  text, texts} = req.body
+      const postImagePath = req.files.post_image[0].filename
+      const filesPaths = req.files.files.map(file => file.filename)
+      const {title, owner_pick, reason, texts} = req.body
       const hashtags = texts[0].split(',').slice(1, )
       const {id} = req.session.user
 
       await dbConnect()
-      const user = await User.findOne({ id });
+      const user = await User.findOne({ username: id });
+      
       const newPost = await Post.create({
           title,
           owner_pick,
           reason,
           post_image: postImagePath,
           files: filesPaths,
-          text,
-          texts,
+          texts: Object.values(texts),
           hashtags,
           owner: user._id
       });
+
+
 
       user.posts.push(newPost._id);
       await user.save();
