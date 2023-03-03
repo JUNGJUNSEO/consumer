@@ -11,6 +11,7 @@ export interface IUser extends Document {
   name?: string;
   location?: string;
   posts: IPost['_id'][];
+  readPosts: IPost['_id'][];
 }
 
 const userSchema: Schema<IUser> = new mongoose.Schema({
@@ -24,7 +25,12 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
   posts: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Post',
+  }],
+  readPosts: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Post',
   }]
+
 });
 
 userSchema.pre<IUser>('save', function (next) {
