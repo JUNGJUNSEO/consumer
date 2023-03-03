@@ -10,7 +10,6 @@ interface PostHeadProps{
 }
 
 const PostHead:React.FC<PostHeadProps> = ({userId, title, createdAt, tags}) => {
-    console.log(userId)
 
     return (
         <div className={classes.block}>
