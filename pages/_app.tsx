@@ -1,10 +1,11 @@
 import '@/styles/globals.css'
 import { AppProps } from 'next/app';
-import { RecoilRoot } from 'recoil';
-import {Noto_Sans_KR} from '@next/font/google';
+import { Noto_Sans_KR } from '@next/font/google';
 import Layout from '@/components/layout/Layout';
-import { ReactElement, ReactNode, useEffect, useState } from 'react';
-import { NextPage } from 'next';
+import { ReactElement, ReactNode} from 'react';
+import { NextPage, NextPageContext } from 'next';
+import { getIronSession } from 'iron-session';
+import { sessionOptions } from '@/lib/withSession';
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin'],
@@ -16,34 +17,14 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 }
 
 type AppPropsWithLayout = AppProps & {
-  Component: NextPageWithLayout
+  Component: NextPageWithLayout;
+  user: {id: string; loggedIn: boolean;}
 }
 
-
-
-function App({ Component, pageProps }: AppPropsWithLayout) {
-
-  const [user, setUser] = useState({id:'', loggedIn: false})
-
-  useEffect(() => {
-
-    async function fetchUser() {
-      try {
-        const response = await fetch('/api/userinfo')
-        if (response.ok) {
-          const data = await response.json()
-          setUser(data)
-        }
-      } catch (error) {
-        setUser({id:'', loggedIn: false})
-      }
-    }
-    fetchUser()
-
-  }, [])
-
+function App({ Component, pageProps, user}: AppPropsWithLayout) {
+  
   return (
-    <RecoilRoot>
+
       <div className={notoSansKR.className}>
         <Layout user={user}>
           {Component.getLayout 
@@ -51,9 +32,14 @@ function App({ Component, pageProps }: AppPropsWithLayout) {
             : <Component {...pageProps}/>}
         </Layout> 
       </div>
-    </RecoilRoot>
   ) 
 }
+
+App.getInitialProps = async ({ctx}: { ctx: NextPageContext }) => {
+  const session = await getIronSession(ctx.req, ctx.res, sessionOptions)
+  const user = session?.user || { id: '', loggedIn: false };
+  return { user };
+};
 
 
 
