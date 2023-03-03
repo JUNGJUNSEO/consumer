@@ -17,22 +17,25 @@ interface LayoutProps {
 }
 
 
-function Layout({ user, children }: PropsWithChildren<LayoutProps>) {
-
+const Layout = ({ user, children }: PropsWithChildren<LayoutProps>) => {
     const [showModal, setShowModal] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
    
     const modalHandler = () => {
-        setShowModal((pre) => !pre);
+        setShowModal((preState) => !preState);
     }
 
     const menuHandler = () => {
-        setShowMenu((pre) => !pre);
+        setShowMenu((preState) => !preState);
+    }
+
+    if (showMenu && !user.loggedIn ) {
+        menuHandler()
     }
 
     return (
         <>
-            {showModal && (
+            {showModal && !user.loggedIn && (
                 <>
                     <Modal onCloseAuthModal={modalHandler} />
                     <AuthFormContainer onCloseAuthModal = {modalHandler}/>
@@ -60,7 +63,6 @@ function Layout({ user, children }: PropsWithChildren<LayoutProps>) {
                         <div onClick={modalHandler}>로그인</div>
                     </RoundButton>
                 )}
-                
             </div>
             <main className={styles.main}>{children}</main>
         </>
