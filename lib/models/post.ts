@@ -7,14 +7,10 @@ export interface IPost extends mongoose.Document {
   reason: string;
   post_image: string;
   files: string[];
-  text?: string;
   texts?: string[];
   hashtags: string[];
   createdAt: Date;
-  meta: {
-    likes: number;
-    comments_count: number;
-  };
+  likes: mongoose.Types.ObjectId[];
   comments: mongoose.Types.ObjectId[];
   owner: IUser['_id'];
 }
@@ -41,7 +37,7 @@ const postSchema = new mongoose.Schema<IPost>({
     required: true,
   },
   texts: {
-    type: [[String]],
+    type: [String],
   },
   hashtags: {
     type: [String],
@@ -52,17 +48,9 @@ const postSchema = new mongoose.Schema<IPost>({
     required: true,
     default: Date.now,
   },
-  meta: {
-    likes: {
-      type: Number,
-      default: 0,
-      required: true,
-    },
-    comments_count: {
-      type: Number,
-      default: 0,
-      required: true,
-    },
+  likes: {
+    type: [String],
+    required: true,
   },
   comments: [
     {
