@@ -12,10 +12,9 @@ export type PostCardProps = {
 }
 
 function PostCard({post} : PostCardProps){
-    const { title, post_image, hashtags, owner, createdAt, meta } = post;
-    const { comments_count, likes } = meta;
+    const { title, post_image, hashtags, owner, createdAt, likes, comments } = post;
     const { username, avatarUrl, name } = owner
-  
+
     const router = useRouter()
 
     const showDetailHandler = () => {
@@ -54,12 +53,12 @@ function PostCard({post} : PostCardProps){
                             <div>
                                 <div>
                                     <MdComment/>
-                                    <span>{comments_count}</span>
+                                    <span>{comments.length}</span>
                                 </div>
 
                                 <div>
                                     <AiFillHeart/>
-                                    <span>{likes}</span>
+                                    <span>{likes.length}</span>
                                 </div>
 
                             </div>
