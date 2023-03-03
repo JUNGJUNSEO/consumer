@@ -6,7 +6,6 @@ async function dbConnect() {
     
     // MongoDB에 연결되어 있을 경우 또 다시 연결 되는 걸 막는다.
     if (connection) {
-        console.log('seo')
         return
     }
 
