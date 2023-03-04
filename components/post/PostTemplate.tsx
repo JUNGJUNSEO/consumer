@@ -11,9 +11,18 @@ interface PostTemplateProps extends ModelProps {
 
 const PostTemplate:React.FC<PostTemplateProps> = ({user, post}) => {
 
+    // const comments = post.comments.map(comment => ({
+    //     writer: comment.writer,
+    //     text: comment.text,
+    //     createdAt: comment.createdAt
+    //   }));
+
     return (
         <div className={classes.block}>
-            <PostAction/>
+            <PostAction
+                likes={post.likes.length}
+                comments={post.comments.length}
+            />
             <PostHead 
                 userId={user.username} 
                 title={post.title} 
@@ -26,7 +35,7 @@ const PostTemplate:React.FC<PostTemplateProps> = ({user, post}) => {
                 ownerPick={post.owner_pick}
             />
             <PostBottom/>
-            <PostComment/>
+            <PostComment comments={post.comments}/>
         </div>
     )
 }
