@@ -18,6 +18,7 @@ async function dbConnect() {
         // User 모델과 Post 모델을 미리 로드합니다.
         await import('./models/user');
         await import('./models/post');
+        await import('./models/comment');
 
 
     } catch (error) {
