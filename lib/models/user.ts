@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import bcrypt from 'bcrypt';
 import { IPost } from './post';
+import { IComment } from './comment';
 
 export interface IUser extends Document {
   avatarUrl?: string;
@@ -10,8 +11,10 @@ export interface IUser extends Document {
   password: string;
   name?: string;
   location?: string;
+  introduction? : string
   posts: IPost['_id'][];
   readPosts: IPost['_id'][];
+  comments: IComment["_id"][];
 }
 
 const userSchema: Schema<IUser> = new mongoose.Schema({
@@ -22,6 +25,7 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
   password: { type: String, required: true},
   name: { type: String, required: true},
   location: String,
+  introduction: String,
   posts: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Post',
@@ -29,8 +33,11 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
   readPosts: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Post',
-  }]
-
+  }],
+  comments: [{ 
+    type: mongoose.Schema.Types.ObjectId,
+  }],
+   
 });
 
 userSchema.pre<IUser>('save', function (next) {
