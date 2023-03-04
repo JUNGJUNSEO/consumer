@@ -1,5 +1,6 @@
 import PostTemplate from "@/components/post/PostTemplate"
 import dbConnect from "@/lib/dbConnect"
+import Post from "@/lib/models/post";
 import User, { IUser } from "@/lib/models/user"
 import { ModelProps } from "@/types/model";
 import { GetStaticPaths } from "next"
@@ -55,8 +56,16 @@ export const getStaticProps = async({ params }: IPath) => {
 
       const { userId, postTitle } = params
 
-      const user = await User.findOne({ username: userId }).populate('posts');
-      const post = user.posts.find((post) => post.title === postTitle);
+      const user = await User.findOne({ username: userId });
+      const post = await Post.findOne({ title: postTitle, owner: user._id }).populate({
+        path: 'comments',
+        populate: {
+          path: 'writer',
+          model: 'User',
+          select: ['username', 'avatarUrl']
+        }
+      });
+      console.log(post)
       const data = { user, post }
       const newData = JSON.parse(JSON.stringify(data))
 
