@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { IComment } from './comment';
 import { IUser } from './user';
 
 export interface IPost extends mongoose.Document {
@@ -10,8 +11,8 @@ export interface IPost extends mongoose.Document {
   texts?: string[];
   hashtags: string[];
   createdAt: Date;
-  likes: mongoose.Types.ObjectId[];
-  comments: mongoose.Types.ObjectId[];
+  likes: string[];
+  comments: IComment['_id'][];
   owner: IUser['_id'];
 }
 
