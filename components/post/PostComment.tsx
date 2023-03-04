@@ -1,22 +1,56 @@
-import { useEffect, useState } from "react"
+import { useRouter } from "next/router";
+import { useState } from "react"
+import Comments from "./Comments";
 import styles from "./PostComment.module.css"
 
-const PostComment = () => {
-    const [text, setText] = useState('');
-    const [comments, setComments] = useState([]);
+export interface PostCommentProps{
+    comments: {
+        writer: {
+            username: string;
+            avatarUrl: string;
+        };
+        text: string;
+        createdAt: Date;
+    }[]
+}
 
-    // useEffect(() => {
-    //   const getComments = async () => {
-    //     const response = await fetch('/api/comments');
-    //     const data = await response.json();
-    //     setComments(data);
-    //   };
-    //   getComments();
-    // }, []);
-    
+const PostComment:React.FC<PostCommentProps> = ({comments}) => {
+    const [text, setText] = useState('');
+    const [newComments, setNewComments] = useState(comments);
+    const router = useRouter()
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
+
+        const {postTitle, userId} = router.query
+        const response = await fetch('/api/posts/comment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                postTitle,
+                userId,
+                text: text.trim(),
+            })
+        })
+
+        if (response.ok) {
+            const data = await response.json();
+
+            setNewComments([
+                ...newComments,
+                {writer: {
+                    username: data.writer,
+                    avatarUrl: data.avatarUrl
+                },
+                text: data.text,
+                createdAt: data.createdAt,
+                }
+            ])
+
+            setText("");
+        }
     }
 
     return (
@@ -31,15 +65,7 @@ const PostComment = () => {
                 <br />
                 <button type="submit">제출</button>
             </form>
-            <ul className={styles.comments}>
-                {comments.map((comment) => (
-                <li key={comment._id} className={styles.comment}>
-                    <p className={styles.commentName}>{comment.name}</p>
-                    <p className={styles.commentText}>{comment.text}</p>
-                    <p className={styles.commentDate}>{comment.createdAt}</p>
-                </li>
-                ))}
-            </ul>
+            <Comments comments={newComments}/>
         </div>
       );
 }
