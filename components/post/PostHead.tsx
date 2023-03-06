@@ -12,8 +12,8 @@ interface PostHeadProps{
 const PostHead:React.FC<PostHeadProps> = ({userId, title, createdAt, tags}) => {
 
     return (
-        <div className={classes.block}>
-            <div className={classes.wrapper}>
+        
+            <div className={classes.container}>
                 <h1 className={classes.title}>{title}</h1>
                 <div className={classes.info}>
                     <div>
@@ -27,7 +27,7 @@ const PostHead:React.FC<PostHeadProps> = ({userId, title, createdAt, tags}) => {
             </div>
                 
 
-        </div>
+
     )
 }
 
