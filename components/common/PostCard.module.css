@@ -5,13 +5,14 @@
   width: 100%;
 	height: auto;
   padding: 1rem;
-  transition: opacity ease-in 0.25s;
+  transition: opacity transform ease-in 0.25s;
   
 
 }
 
 .postCard:hover {
   opacity: 0.85;
+  
 }
 
 .image{
