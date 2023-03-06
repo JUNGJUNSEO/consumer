@@ -1,15 +1,26 @@
 import styles from "./UserLayout.module.css"
 import UserProfile from "./UserProfile"
 import NavProfile from "./NavProfile"
-import type { ReactElement } from "react"
+import { PropsWithChildren } from "react"
+import { IUser } from "@/lib/models/user"
 
-function UserLayout(page: ReactElement) {
+interface UserLayoutProps {
+    user: IUser
+}
+
+function UserLayout({ children, user } : PropsWithChildren<UserLayoutProps>) {
 
     return (
         <div className={styles.container}>
             <UserProfile/>
-            <NavProfile/>
-            {page}
+            <NavProfile
+                userPosts={user.posts.length}
+                readPosts={user.readPosts.length}
+                likePosts={user.likePosts.length}
+            />
+            <div>
+                {children}
+            </div>
         </div>
     )
 
