@@ -65,7 +65,7 @@ export const getStaticProps = async({ params }: IPath) => {
           select: ['username', 'avatarUrl']
         }
       });
-      console.log(post)
+
       const data = { user, post }
       const newData = JSON.parse(JSON.stringify(data))
 
