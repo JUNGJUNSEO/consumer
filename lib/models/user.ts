@@ -13,6 +13,7 @@ export interface IUser extends Document {
   location?: string;
   introduction? : string
   posts: IPost['_id'][];
+  likePosts: IPost['_id'][];
   readPosts: IPost['_id'][];
   comments: IComment["_id"][];
 }
@@ -31,6 +32,10 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
     ref: 'Post',
   }],
   readPosts: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Post',
+  }],
+  likePosts: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Post',
   }],
