@@ -33,6 +33,12 @@
   position: relative;
   
 }
+
+@media (max-width: 768px) {
+  .table th {
+    height: 15rem;
+  }
+}
   
 .table th img {
   position: absolute;
