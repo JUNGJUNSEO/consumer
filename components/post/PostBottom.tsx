@@ -4,7 +4,7 @@ import styles from "./PostBottom.module.css"
 const PostBottom = () => {
 
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.container}>
             <div className={styles.avatar}>
                 <span className={styles.line}/>
                 <Link href={"/#0"}>
