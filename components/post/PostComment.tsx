@@ -37,7 +37,7 @@ const PostComment:React.FC<PostCommentProps> = ({comments}) => {
 
         if (response.ok) {
             const data = await response.json();
-
+            console.log(data.createdAt, typeof(data.createdAt))
             setNewComments([
                 ...newComments,
                 {writer: {
