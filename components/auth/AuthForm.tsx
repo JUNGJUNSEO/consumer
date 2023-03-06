@@ -3,7 +3,6 @@ import LoginForm from "./LoginForm"
 import ReactDOM from "react-dom"
 import { Fragment, PropsWithChildren } from "react"
 import AuthSocialButtons from "./AuthSocialButtons"
-import { MdClose } from 'react-icons/md';
 import JoinButton from "./JoinButton"
 import Exit from "../ui/Exit"
 
