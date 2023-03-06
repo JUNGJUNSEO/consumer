@@ -9,6 +9,9 @@
     z-index: 100;
     background-color: var(--white-color);
 }
+.shadow {
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
 
 .search {
     display: flex;
@@ -24,6 +27,25 @@
 
 .main {
     height: 100vh;
+}
+
+
+.joinButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: var(--font-gray-color);
+    border-radius: 0.25rem;
+    background-color: var(--white-color);
+    transition: opacity ease-in 0.125s;
+    padding: .75rem;
+    cursor: pointer;
+    margin-right: .5rem;
+}
+
+.joinButton:hover{
+    opacity: 0.85;
 }
 
 @media (max-width: 768px) {
