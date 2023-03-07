@@ -35,16 +35,23 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
         }
 
         const {id} = req.session.user
-    
-        if (post.likes.includes(id)) {
-            const updatedLikes = post.likes.filter((item: string) => item !== id);
-            post.likes = updatedLikes;
-            await post.save()
+        const loggedInUser = await User.findOne({ username: id})
+        if (!loggedInUser) {
+            return res.status(401).json({ message: "Unauthorized" });
+          }
+          
+        const isLiked = post.likes.includes(id);
+        if (isLiked) {
+
+            await post.updateOne({ $pull: { likes: id } });
+            await loggedInUser.updateOne({ $pull: { likePosts: post._id }});
+            
             return res.status(200).json({ status: "minus",  message: "You already liked this post" });
         }
-        
-        post.likes.push(id)
-        await post.save()
+
+        await post.updateOne({ $addToSet: { likes: id } });
+        await loggedInUser.updateOne({ $addToSet: { likePosts: post._id } });
+
 
         return res.status(200).json({ status: "plus", message: "좋아요 성공" })
     } catch(error) {
