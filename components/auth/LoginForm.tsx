@@ -2,6 +2,7 @@ import { useRouter } from "next/router"
 import React, { useReducer, useState } from "react"
 import AuthButton from "../ui/Button/AuthButton"
 import styles from './LoginForm.module.css'
+import useSWR, { useSWRConfig } from 'swr'
 
 enum ActionType {
     InputClick = 'INPUT_CLICK',
@@ -42,6 +43,7 @@ const LoginForm = () => {
     const [usernameState, dispatchUsername] = useReducer(reducer, { isClicked: false, gotError: false })
     const [passwardError, dispatchPassward] = useReducer(reducer, { isClicked: false, gotError: false })
     const router = useRouter()
+    const { mutate } = useSWRConfig()
 
     const userChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         setUsernameState(event.target.value)
@@ -79,6 +81,7 @@ const LoginForm = () => {
             dispatchPassward({type: ActionType.GetError})
         }else if (response.status === 200) {
             router.push('/')
+            mutate('/api/session')
         }   
     }
 
