@@ -8,15 +8,17 @@ import UserIcon from "./UserIcon"
 import RoundButton from "../ui/Button/RoundButton"
 import UserMenu from "./UserMenu"
 import AuthFormContainer from "@/containers/AuthFormContainer"
-
+import useSWR from 'swr'
 
 
 const Layout = ({ children }: PropsWithChildren) => {
     const [showModal, setShowModal] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const [showShadow, setShowShadow] = useState(false);
-    const [user, setUser] = useState({id: '', loggedIn: false})
-   
+    const fetcher = (url:string) => fetch(url).then((res) => res.json());
+    const { data: user, error, isLoading } = useSWR('/api/session', fetcher)
+
+  
     const modalHandler = () => {
         setShowModal((preState) => !preState);
     }
@@ -34,17 +36,6 @@ const Layout = ({ children }: PropsWithChildren) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-
-
-    useEffect(() => {
-        async function fetchSession() {
-            const response = await fetch('api/session')
-            const data = await response.json()
-            setUser(data)
-        }
-
-        fetchSession()
-    }, [])
 
     if (showMenu && !user.loggedIn ) {
         menuHandler()
@@ -64,7 +55,7 @@ const Layout = ({ children }: PropsWithChildren) => {
                     <SearchInput/>
                 </div>
                 <div className={styles.user}>
-                    {user.loggedIn ? (
+                    {!isLoading && user.loggedIn ? (
                         <>
                             <div className={styles.newPost}>
                                 <RoundButton >
