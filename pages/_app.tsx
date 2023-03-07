@@ -5,7 +5,8 @@ import Layout from '@/components/layout/Layout';
 import { ReactElement, ReactNode} from 'react';
 import { NextPage, NextPageContext } from 'next';
 import { getIronSession } from 'iron-session';
-import { sessionOptions } from '@/lib/withSession';
+import { sessionOptions, withSessionRoute } from '@/lib/withSession';
+import axios from 'axios';
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin'],
@@ -18,15 +19,14 @@ export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
-  user: {id: string; loggedIn: boolean;}
 }
 
-function App({ Component, pageProps, user}: AppPropsWithLayout) {
+function App({ Component, pageProps }: AppPropsWithLayout) {
   
   return (
 
       <div className={notoSansKR.className}>
-        <Layout user={user}>
+        <Layout>
           {Component.getLayout 
             ? Component.getLayout(<Component {...pageProps}/>) 
             : <Component {...pageProps}/>}
@@ -35,11 +35,7 @@ function App({ Component, pageProps, user}: AppPropsWithLayout) {
   ) 
 }
 
-App.getInitialProps = async ({ctx}: { ctx: NextPageContext }) => {
-  const session = await getIronSession(ctx.req, ctx.res, sessionOptions)
-  const user = session?.user || { id: '', loggedIn: false };
-  return { user };
-};
+
 
 
 
