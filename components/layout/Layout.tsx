@@ -37,7 +37,7 @@ const Layout = ({ children }: PropsWithChildren) => {
     }, []);
 
 
-    if (showMenu && !user.loggedIn ) {
+    if (showMenu && !user?.loggedIn ) {
         menuHandler()
     }
 
@@ -59,7 +59,7 @@ const Layout = ({ children }: PropsWithChildren) => {
                         <>
                             <div className={styles.newPost}>
                                 <RoundButton >
-                                    <Link href="/new-post">비교 상품 만들기</Link>
+                                    <Link href="/write">비교 상품 만들기</Link>
                                 </RoundButton>
                             </div>
 
