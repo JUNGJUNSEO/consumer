@@ -5,11 +5,26 @@ import {BsCardHeading} from"react-icons/bs"
 import {AiFillHeart} from "react-icons/ai"
 import {GiBackwardTime} from "react-icons/gi"
 import {MdPostAdd} from "react-icons/md"
+import { useSWRConfig } from 'swr'
+import { useRouter } from "next/router"
 
-function UserMenu(){
+const UserMenu = () => {
+    
+    const { mutate } = useSWRConfig()
+    const router = useRouter()
 
     const handleLogout = async() => {
-        await fetch('/api/logout')
+        const response = await fetch('/api/logout', {
+            method: 'POST',
+            headers: {
+                'Referer': window.location.href
+            }
+        })
+       
+        mutate('/api/session')
+        if (response.status === 302) {
+            router.push('/')
+        }
     }
 
     return (
@@ -20,11 +35,11 @@ function UserMenu(){
                     내 프로필
                 </li>
                 <hr></hr>
-                <li>
+                {/* <li>
                     <MdPostAdd/>
                     비교 상품 만들기
                 </li>
-                <hr></hr>
+                <hr></hr> */}
                 <li>
                     <BsCardHeading/>
                     내 포스트
