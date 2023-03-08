@@ -80,7 +80,7 @@ const LoginForm = () => {
         }else if (response.status === 401) {
             dispatchPassward({type: ActionType.GetError})
         }else if (response.status === 200) {
-            router.push('/')
+            router.push(router.asPath)
             mutate('/api/session')
         }   
     }
