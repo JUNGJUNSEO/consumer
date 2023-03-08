@@ -1,6 +1,5 @@
 import PublishModal from "@/components/publish/PublishModal";
 import BottomLayout from "@/components/write/BottomLayout";
-import WriteBackground from "@/components/write/WriteBackground";
 import WriteTitle from "@/components/write/WriteTitle";
 import { useState } from "react";
 import TableContainer from "./TableContainer";
@@ -88,32 +87,32 @@ function WriteFormContainer() {
 
     return (
       <form onSubmit={handleSubmit}>
-        <WriteBackground>
-          <WriteTitle 
-              title = {title}
-              onChange={titleChangeHandler}
-          />
-          <TableContainer
-              tableData={tableData}
-              setTableData={setTableData}
-              setNumRows={setNumRows}
-              numCols = {numCols}
-              setNumCols={setNumCols}
-          />
-          <BottomLayout onClick={handleShowModal}/>
-        </WriteBackground>
-        {showModal && (
-        <PublishModal
-          tableData = {tableData}
-          onClick={handleShowModal} 
-          selectedProduct={selectedProduct} 
-          onClickProduct={handleClickProduct}
-          reason={reason}
-          onChangeReason={reasonChangeHandler}
-          onChangeThumb={ThumbFileHandler}
-          />
-        )}
-      </form>
+  
+        <WriteTitle 
+            title = {title}
+            onChange={titleChangeHandler}
+        />
+        <TableContainer
+            tableData={tableData}
+            setTableData={setTableData}
+            setNumRows={setNumRows}
+            numCols = {numCols}
+            setNumCols={setNumCols}
+        />
+        <BottomLayout onClick={handleShowModal}/>
+
+      {showModal && (
+      <PublishModal
+        tableData = {tableData}
+        onClick={handleShowModal} 
+        selectedProduct={selectedProduct} 
+        onClickProduct={handleClickProduct}
+        reason={reason}
+        onChangeReason={reasonChangeHandler}
+        onChangeThumb={ThumbFileHandler}
+        />
+      )}
+    </form>
     )
 }
 
