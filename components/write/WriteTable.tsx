@@ -39,9 +39,9 @@ const WriteTable: React.FC<WriteTableProps> = ({
                             {row.map((col, colIndex) => {
                                 if (rowIndex === 0) {
                                     return (
-                                        <td key={colIndex}>
+                                        <th key={colIndex}>
                                             {colIndex === 0 ? (
-                                                <div>사진</div>
+                                                <div className={styles.picture}>사진</div>
                                             ) : (
                                                 <div className={styles.inputFile}>
                                                     <div id={`${rowIndex}-${colIndex}-input`}>
@@ -65,7 +65,7 @@ const WriteTable: React.FC<WriteTableProps> = ({
                                                     </div>
                                                 </div>
                                             )}
-                                        </td>
+                                        </th>
                                     )
                                 }else {
                                     return (
