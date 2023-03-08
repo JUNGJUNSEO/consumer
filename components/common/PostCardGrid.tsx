@@ -11,7 +11,7 @@ function PostCardGrid({posts} : PostCardGridProp){
 
     return (
         <div className={classes.container}>
-            {posts.map((post) => {
+            {posts?.map((post) => {
                 return (
                     <PostCard
                         key = {post._id}
