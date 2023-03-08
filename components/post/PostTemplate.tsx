@@ -20,22 +20,22 @@ const PostTemplate:React.FC<PostTemplateProps> = ({user, post}) => {
     return (
         <div className={classes.block}>
             <PostAction
-                likes={post.likes.length}
-                comments={post.comments.length}
+                likes={post?.likes.length}
+                comments={post?.comments.length}
             />
             <PostHead 
-                userId={user.username} 
-                title={post.title} 
-                createdAt={new Date(post.createdAt).toISOString()} 
-                tags={post.hashtags}
+                userId={user?.username} 
+                title={post?.title} 
+                createdAt={new Date(post?.createdAt).toISOString()} 
+                tags={post?.hashtags}
             />
             <ProductsComparisonTable
-                files={post.files}
-                texts={post.texts}
-                ownerPick={post.owner_pick}
+                files={post?.files}
+                texts={post?.texts}
+                ownerPick={post?.owner_pick}
             />
             <PostBottom/>
-            <PostComment comments={post.comments}/>
+            <PostComment comments={post?.comments}/>
         </div>
     )
 }
