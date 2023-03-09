@@ -1,14 +1,18 @@
-import classes from "./Usermenu.module.css"
+import styles from "./Usermenu.module.css"
 import {SlLogout} from"react-icons/sl"
 import {CgProfile} from"react-icons/cg"
 import {BsCardHeading} from"react-icons/bs"
 import {AiFillHeart} from "react-icons/ai"
 import {GiBackwardTime} from "react-icons/gi"
-import {MdPostAdd} from "react-icons/md"
 import { useSWRConfig } from 'swr'
 import { useRouter } from "next/router"
+import Link from "next/link"
+import { ISession } from "@/types/session"
 
-const UserMenu = () => {
+
+interface UserMenuProps extends ISession{}
+
+const UserMenu:React.FC<UserMenuProps>= ({ user }) => {
     
     const { mutate } = useSWRConfig()
     const router = useRouter()
@@ -28,34 +32,53 @@ const UserMenu = () => {
     }
 
     return (
-        <div className={classes.block}>
-            <ul className={classes.wrapper}>
+        <div className={styles.block}>
+            <ul className={styles.menuList}>
                 <li>
-                    <CgProfile/>
-                    내 프로필
+                    <Link href={"/[userId]"} as={`/${user.id}`}>
+                        <div className={styles.menuItem}>
+                            <CgProfile/>
+                            내 프로필
+                        </div>
+
+                    </Link>
                 </li>
-                <hr></hr>
-                {/* <li>
-                    <MdPostAdd/>
-                    비교 상품 만들기
-                </li>
-                <hr></hr> */}
+                <hr/>
                 <li>
-                    <BsCardHeading/>
-                    내 포스트
+                    <Link href={"/[userId]"} as={`/${user.id}`}>
+                        <div className={styles.menuItem}>
+                            <BsCardHeading/>
+                            내 포스트
+                        </div>
+
+                    </Link>
                 </li>
                 <li>
-                    <AiFillHeart/>
-                    좋아요 표시한 포스트
+                    <Link href={"/[userId]/like"} as={`/${user.id}/like`}>
+                        <div className={styles.menuItem}>
+                            <AiFillHeart/>
+                            좋아요 표시한 포스트
+                        </div>
+
+                    </Link>
+
                 </li>
                 <li>
-                    <GiBackwardTime/>
-                    최근에 읽은 포스트
+                    <Link href={"/[userId]/read"} as={`/${user.id}/read`}>
+                        <div className={styles.menuItem}>
+                            <GiBackwardTime/>
+                            최근에 읽은 포스트
+                        </div>
+
+                    </Link>
                 </li>
-                <hr></hr>
+                <hr/>
                 <li onClick={handleLogout}>
-                  <SlLogout/>
-                    로그아웃
+                    <div className={styles.menuItem}>
+                        <SlLogout/>
+                        로그아웃
+                    </div>
+
                 </li>
 
             </ul>
