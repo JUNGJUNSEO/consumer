@@ -1,3 +1,4 @@
+import { ISession } from "@/types/session";
 import { withIronSessionApiRoute, withIronSessionSsr } from "iron-session/next";
 import {
     GetServerSidePropsContext,
@@ -32,10 +33,6 @@ export function withSessionSsr<
 
   
 declare module "iron-session" {
-    interface IronSessionData {
-        user?: {
-            id: string,
-            loggedIn: boolean
-        }
+    interface IronSessionData extends ISession{
     }
 }
