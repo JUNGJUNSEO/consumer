@@ -1,12 +1,12 @@
-.wrapper {
+.block {
   margin-top: 6rem;
-  position: relative;
 }
   
 .table {
   border-collapse: collapse;
   background-color: white;
   width: 100%;
+  margin-bottom: 4rem;
   
 }
 
@@ -106,11 +106,12 @@
   margin: auto;
 }
 
-.inputFile div:nth-child(2) button {
+.trashButton {
   position: absolute;
   right: 5%;
   bottom: 5%;
-  background-color: white;
+  background-color: #111111;
+  color: white;
   border:none;
   width: 50px;
   height: 50px;
@@ -119,17 +120,17 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
 
   
 }
 
-.inputFile div:nth-child(2) button:hover {
+.trashButton:hover {
   opacity: 0.75;
 }
-.inputFile div:nth-child(2) button svg {
-  font-size: 2rem;
-  
 
+.trashButton svg {
+  font-size: 1.75rem;
 }
 
 
@@ -137,19 +138,21 @@
   padding: 1rem 0;
 }
 
-.inputText:hover {
-  background-color:red;
+
+.addButton {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
 }
 
-.rowButton,
-.colButton {
+.addButton div {
+  display: inline-block;
   background-color: black;
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-
-
+  margin-left: 1rem;
 }
 
