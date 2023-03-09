@@ -1,26 +1,14 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## 프로젝트 구조
+프로젝트의 구조는 다음과 같습니다.
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+ - components: Next.js의 컴포넌트들이 포함되어 있습니다.
+ - containers: 페이지와 관련된 상태 및 로직이 포함되어 있습니다.
+ - pages: Next.js의 페이지들이 포함되어 있습니다.
+ - public: 이미지 및 기타 정적 파일들이 포함되어 있습니다.
+ - server: 서버 관련 코드들이 포함되어 있습니다.
+ - utils: 유틸리티 함수들이 포함되어 있습니다.
 
 ## Learn More
 
