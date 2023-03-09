@@ -1,5 +1,5 @@
 import { FC } from "react"
-import styles from "/WriteTitle.module.css"
+import styles from "./WriteTitle.module.css"
 
 interface WriteTitleProps {
     title: string
@@ -10,7 +10,7 @@ const WriteTitle:FC<WriteTitleProps> = ({title, onChange}) => {
 
     return (
 
-        <div>
+        <div className={styles.title}>
             <input 
                 type="text" 
                 value={title} 
