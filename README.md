@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## consumer
+이 프로젝트는 소비자가 직접 사용해본 제품들을 비교 작성하고 공유하는 것을 목표로 합니다. 
+프로젝트는 MongoDB, Express, React, Node.js (MERN) 스택으로 작성되었으며, Next.js, TypeScript, Mongoose를 사용했습니다.
 
 ## 프로젝트 구조
 프로젝트의 구조는 다음과 같습니다.
