@@ -16,11 +16,14 @@ export async function middleware(req: NextRequest) {
   const { user } = session;
 
   if (req.nextUrl.pathname.startsWith('/write')) {
-
-    // This logic is only applied to /about
+    if (!user) {
+      return NextResponse.rewrite(new URL('/', req.url))
+    }
   }
 
-  if (req.nextUrl.pathname.startsWith('/dashboard')) {
-    // This logic is only applied to /dashboard
+  if (req.nextUrl.pathname.startsWith('/join')) {
+    if (user) {
+      return NextResponse.rewrite(new URL('/', req.url))
+    }
   }
 }
