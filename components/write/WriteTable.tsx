@@ -31,7 +31,12 @@ const WriteTable: React.FC<WriteTableProps> = ({
    
     return (
 
-        <div className={styles.wrapper}>
+        <div className={styles.block}>
+            <div className={styles.addButton}>
+                <div onClick={onAddRow}>행 추가</div>
+                <div onClick={onAddCol}>열 추가</div>
+            </div>
+  
             <table className={styles.table}>
                 <tbody>
                     {tableData.map((row, rowIndex) => (
@@ -59,8 +64,8 @@ const WriteTable: React.FC<WriteTableProps> = ({
                                                     </div>
                                                     <div id={`${rowIndex}-${colIndex}-image`}>
                                                         <img id={`${rowIndex}-${colIndex}`}/>
-                                                        <button onClick={handleRemoveImage}>
-                                                            <BsFillTrashFill />
+                                                        <button onClick={handleRemoveImage} className={styles.trashButton}>
+                                                            <BsFillTrashFill/>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -85,8 +90,7 @@ const WriteTable: React.FC<WriteTableProps> = ({
                     ))}
                 </tbody>
             </table>
-            <button className={styles.rowButton} onClick={onAddRow}>행 추가</button>
-            <button className={styles.colButton} onClick={onAddCol}>열 추가</button>   
+ 
 
 
         </div>
