@@ -64,7 +64,7 @@ const Layout = ({ children }: PropsWithChildren) => {
                             </div>
 
                             <UserIcon onClickMenu={menuHandler}/>
-                            {showMenu && <UserMenu/>}
+                            {showMenu && <UserMenu user={user}/>}
                         
                         </>
 
@@ -78,7 +78,7 @@ const Layout = ({ children }: PropsWithChildren) => {
                                 회원 가입
                             </Link>
                             <RoundButton>
-                            <div onClick={modalHandler}>로그인</div>
+                                <div onClick={modalHandler}>로그인</div>
                             </RoundButton>
 
                         </>
