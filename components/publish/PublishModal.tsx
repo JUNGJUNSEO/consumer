@@ -47,12 +47,16 @@ const PublishModal : FC<PublishModalProps> = ({
                 {currentPage === 0 && 
                     <>
                         <h4>사용 경험이 가장 좋았던 제품을 선택해 주세요</h4>
-                        <ProductSelect tableData={tableData} selectedProduct={selectedProduct} onClickProduct={onClickProduct} />
+                        <ProductSelect 
+                            tableData={tableData} 
+                            selectedProduct={selectedProduct} 
+                            onClickProduct={onClickProduct} 
+                        />
                     </>
                 }
                 {currentPage === 1 && 
                     <>
-                        <h4>Product 1이 가장 좋았던 이유에 대해 적어주세요</h4>
+                        <h4>{`${tableData[1][selectedProduct]}이 가장 좋았던 이유에 대해 적어주세요`}</h4>
                         <textarea value={reason} onChange={onChangeReason}/>
                     </>
                 }
@@ -66,6 +70,7 @@ const PublishModal : FC<PublishModalProps> = ({
                     </>
                 }
                 <div className={styles.buttons}>
+                    {currentPage === 0 && (<div></div>)}
                     {currentPage > 0 && (
                         <div onClick={prevButtonHandler}>
                         <RoundButton>이전</RoundButton>
@@ -74,18 +79,19 @@ const PublishModal : FC<PublishModalProps> = ({
 
                     {currentPage < totalPages - 1 && (
                         <div onClick={nextButtonHandler}>
-                        <RoundButton>다음</RoundButton>               
+                            <RoundButton>다음</RoundButton>               
                         </div>
                     )}
 
                     {currentPage === totalPages - 1 && (
-                        <div>
-                        <RoundButton>출간하기</RoundButton>
-                        </div>
+                        <RoundButton>
+                            <button type="submit">출간하기</button>
+                        </RoundButton>
                     )}
+                    
                 </div>
             </div>
-            <button type="submit">Submit</button>
+            
         </div>
     )
 }
