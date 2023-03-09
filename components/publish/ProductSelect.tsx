@@ -1,46 +1,76 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import styles from "./ProductSelect.module.css"
 import { AiFillCheckCircle } from "react-icons/ai";
-
-const products = [
-  { id: 1, name: 'Product 1', image: 'https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg' },
-  { id: 2, name: 'Product 2', image: 'https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg' },
-  { id: 3, name: 'Product 3', image: 'https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg' },
-  { id: 4, name: 'Product 4', image: 'https://m.metashop.co.kr/web/product/big/202203/25e2ec04765cfe928145681aefa6b04f.jpg' },
-];
 
 interface ProductSelectProps{
   tableData: any[][]
   selectedProduct: number;
   onClickProduct: (id:number) => void
+}
 
+const fileChange = async (file: File): Promise<string> => {
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+
+  return await new Promise((resolve, reject) => {
+    reader.onload = () => {
+      const imageUrl = reader.result?.toString();
+      if (imageUrl) {
+        resolve(imageUrl);
+      } else {
+        reject(new Error('Failed to read file.'));
+      }
+    };
+
+    reader.onerror = () => {
+      reject(new Error('Failed to read file.'));
+    };
+  });
+};
+
+interface IProduct {
+  id: number;
+  image: string;
+  name: string
 }
 
 
 const ProductSelect: FC<ProductSelectProps> = ({selectedProduct, onClickProduct, tableData}) => {
+  const [products, setProducts] = useState<IProduct[]>([]);
 
-
-    
-    return (
-      <div className={styles.block}>
-        <div className={styles.products}>
-          {products.map((product) => (
-            <div
-                className={`${styles.product} ${product.id === selectedProduct ? styles.selected : ''}`}
-                key={product.id}
-                onClick={() => onClickProduct(product.id)}
-            >
-              <div className={styles.image}>
-                <img src={product.image} alt={product.name} />
-              </div>
-              <span>{product.name}</span>
-              {product.id === selectedProduct && <AiFillCheckCircle className={styles.check}/>}
-            </div>
-          ))}
-        </div>
-      </div>
-
+  useEffect(() => {
+    const fetchData = async () => {
+      const newProducts = await Promise.all(
+        tableData[0].slice(1).map(async (file: File, index: number) => {
+          const name = tableData[1][index + 1];
+          const image = await fileChange(file);
+          return { id: index + 1, image, name };
+        })
       );
+      setProducts(newProducts);
+    };
+    fetchData();
+  }, [tableData]);
+    
+  return (
+    <div className={styles.block}>
+      <div className={styles.products}>
+        {products.map((product) => (
+          <div
+              className={`${styles.product} ${product.id === selectedProduct ? styles.selected : ''}`}
+              key={product.id}
+              onClick={() => onClickProduct(product.id)}
+          >
+            <div className={styles.image}>
+              <img src={product.image} alt={product.name} />
+            </div>
+            <span>{product.name}</span>
+            {product.id === selectedProduct && <AiFillCheckCircle className={styles.check}/>}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 
