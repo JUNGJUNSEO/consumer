@@ -1,16 +1,94 @@
+import PostCardGrid from "@/components/common/PostCardGrid"
 import UserLayout from "@/components/user/UserLayout"
+import dbConnect from "@/lib/dbConnect"
+import { IPost } from "@/lib/models/post"
+import User, { IUser } from "@/lib/models/user"
+import { GetStaticPaths } from "next"
+import { ReactElement } from "react"
+import { NextPageWithLayout } from "../_app"
 
-const likePostPage = () => {
+interface IPath {
+    params: {
+        userId: string
+    }
+}
+
+interface likePageProps {
+    posts: IPost[]
+}
+
+const likePage: NextPageWithLayout<likePageProps> = ({ posts }) => {
 
     return (
-        <div>
-            내가 좋아하는 페이지
-        </div>
+        <>
+            <PostCardGrid posts={posts}/>
+        </>
     )
 
 }
 
+export const getStaticPaths: GetStaticPaths = async() => {
+    try {
+        await dbConnect()
+        const users: IUser[] = await User.find({})
+        const paths = users.map((user) => ({
+            params: {userId: user.username}
+        }))
 
-likePostPage.getLayout = UserLayout
+        return { paths, fallback: false };
+    } catch(error) {
+        console.log(error)
+        return { paths: [], fallback: false };
+    }
+}
 
-export default likePostPage
+export const getStaticProps = async({ params }: IPath) =>{
+    try {
+        await dbConnect()
+
+        const { userId } = params
+        const user = await User.findOne({ username: userId });
+
+        if (!user) {
+            return {
+                notFound: true,
+            };
+        }
+        
+        const posts = await user.populate({
+            path: 'posts',
+            populate: {
+                path: 'owner',
+                model: 'User',
+                select: ['username', 'name', 'avatarUrl']
+            }
+        })
+   
+
+        return {
+            props: {
+                posts: JSON.parse(JSON.stringify(posts.posts)),
+                user: JSON.parse(JSON.stringify(user))
+            }
+        }
+
+    } catch(error) {
+        return {
+            props: {
+                posts: [],
+                user: ''
+            }
+        }
+    } 
+}
+
+likePage.getLayout = function getLayout(page: ReactElement) {
+
+    return (
+        <UserLayout user={page.props.user}>
+            {page}
+        </UserLayout>
+    )
+}
+
+export default likePage
