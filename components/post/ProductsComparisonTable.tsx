@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./ProductsComparisonTable.module.css";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io"
 import { AiFillCheckCircle } from "react-icons/ai";
@@ -14,7 +14,7 @@ interface ProductsComparisonTableProps {
 const ProductsComparisonTable: React.FC<ProductsComparisonTableProps> = ({files, texts, ownerPick}) => {
 
   const [currentProduct, setCurrentProduct] = React.useState(1);
-  const displayCount = 4
+  const [displayCount, setDisplayCount] = React.useState(4);
   const showPrevBtn = currentProduct > 1
   const showNextBtn = currentProduct < files.length - displayCount + 1
 
@@ -26,6 +26,26 @@ const ProductsComparisonTable: React.FC<ProductsComparisonTableProps> = ({files,
     setCurrentProduct(prevProduct => prevProduct + 1);
   }
 
+  useEffect(() => {
+    function handleResize() {
+      const width = window.innerWidth;
+      if (width <= 768) {
+        setDisplayCount(2)
+      } else {
+        setDisplayCount(4)
+        
+      }
+    }
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+
+  }, []);
+  console.log(currentProduct)
   return (
     <div className={styles.wrapper}>
       <table className={styles.table}>
@@ -33,18 +53,13 @@ const ProductsComparisonTable: React.FC<ProductsComparisonTableProps> = ({files,
           <tr>
             <th>제품 이미지</th>
             {files.slice(currentProduct - 1, currentProduct - 1 + displayCount).map((cell, index) => (
-              <th key={index} >
-                {index === ownerPick ? (
-                  <>
-                    <img src={`/images/${cell}`} alt = "this is the image" />
-                    <div className={styles.userPick}>
-                      <AiFillCheckCircle/>
-                      <span>사용자 pick!</span>
-                    </div>
-                  </>
-
-                ):(
-                  <img src={`/images/${cell}`} alt = "this is the image"/>
+              <th key={cell} >
+                <img src={`/images/${cell}`} alt="this is the image" />
+                {files.indexOf(cell) === ownerPick && (
+                  <div className={styles.userPick}>
+                    <AiFillCheckCircle />
+                    <span>사용자 pick!</span>
+                  </div>
                 )}
                 
               </th>
