@@ -57,6 +57,7 @@ export const getStaticProps = async({ params }: IPath) =>{
         
         const posts = await user.populate({
             path: 'posts',
+            model: 'Post',
             populate: {
                 path: 'owner',
                 model: 'User',
@@ -77,7 +78,8 @@ export const getStaticProps = async({ params }: IPath) =>{
             props: {
                 posts: [],
                 user: ''
-            }
+            },
+            
         }
     } 
 }
