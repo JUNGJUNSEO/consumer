@@ -42,9 +42,9 @@ const ProductSelect: FC<ProductSelectProps> = ({selectedProduct, onClickProduct,
     const fetchData = async () => {
       const newProducts = await Promise.all(
         tableData[0].slice(1).map(async (file: File, index: number) => {
-          const name = tableData[1][index + 1];
+          const name = tableData[1][index];
           const image = await fileChange(file);
-          return { id: index + 1, image, name };
+          return { id: index, image, name };
         })
       );
       setProducts(newProducts);
