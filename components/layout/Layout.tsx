@@ -1,14 +1,14 @@
-import { PropsWithChildren, useEffect, useState } from "react"
-import styles from './Layout.module.css'
-import SearchInput from "../search/SearchInput"
-import Modal from "../ui/Modal"
+import { PropsWithChildren, useEffect, useState } from "react";
+import styles from './Layout.module.css';
+import SearchInput from "../search/SearchInput";
+import Modal from "../ui/Modal";
 import Link from 'next/link';
-import Logo from './Logo'
-import UserIcon from "./UserIcon"
+import Logo from './Logo';
+import UserIcon from "./UserIcon";
 import RoundButton from "../ui/button/RoundButton";
-import UserMenu from "./UserMenu"
-import AuthFormContainer from "@/containers/AuthFormContainer"
-import useSWR from 'swr'
+import UserMenu from "./UserMenu";
+import AuthFormContainer from "@/containers/AuthFormContainer";
+import useSWR from 'swr';
 
 
 
