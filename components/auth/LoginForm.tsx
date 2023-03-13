@@ -1,6 +1,6 @@
 import { useRouter } from "next/router"
 import React, { useReducer, useState } from "react"
-import AuthButton from "../ui/Button/AuthButton"
+import AuthButton from "../ui/button/AuthButton"
 import styles from './LoginForm.module.css'
 import useSWR, { useSWRConfig } from 'swr'
 
