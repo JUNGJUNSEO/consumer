@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styles from "./ProductsComparisonTable.module.css";
 import {IoIosArrowBack, IoIosArrowForward} from "react-icons/io"
 import { AiFillCheckCircle } from "react-icons/ai";
-
+import Image from "next/image"
 
 interface ProductsComparisonTableProps {
   files: string[]
