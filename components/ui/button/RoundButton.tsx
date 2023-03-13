@@ -1,6 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import classes from './RoundButton.module.css'
-
+import classes from './RoundButton.module.css';
 
 const RoundButton = (props: PropsWithChildren) => {
 
