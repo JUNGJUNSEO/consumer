@@ -1,58 +1,60 @@
 .container {
-    margin: 0 auto;
-    max-width: 800px;
-    padding: 2rem;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 2rem;
 }
   
 .form {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    margin-bottom: 2rem;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+}
   
 
 .form textarea,
 .form button {
-    all: unset;
-    border-radius: 0.2rem;
-    background-color: #f1f1f1;
-  }
+  all: unset;
+  border-radius: 0.2rem;
+  background-color: #f1f1f1;
+}
   
 .form textarea {
-    padding: 0.5rem;
-    height: 5rem;
-  }
+  padding: 0.5rem;
+  height: 6rem;
+  width: 100%;
+  box-sizing: border-box;
+}
   
 .form button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--primary-color);
-    color: #fff;
-    cursor: pointer;
-    width: 5rem;
-    padding: 0.75rem;
-    align-items: flex-end;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  width: 5rem;
+  padding: 0.75rem;
+  align-items: flex-end;
+}
   
-  .comments {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
+.comments {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
   
-  .comment {
-    border: 1px solid #eaeaea;
-    border-radius: 0.25rem;
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
+.comment {
+  border: 1px solid #eaeaea;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
   
-  .commentName {
-    margin: 0;
-    font-weight: bold;
-  }
+.commentName {
+  margin: 0;
+  font-weight: bold;
+}
   
   .commentText {
     margin: 0.5rem 0;
