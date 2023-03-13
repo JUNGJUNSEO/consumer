@@ -1,4 +1,4 @@
-.block {
+.round-button {
     display: inline-block;
     font-size: 0.85rem;
     color: var(--white-color);
@@ -10,7 +10,7 @@
     cursor: pointer;
 }
 
-.block:hover{
+.round-button:hover{
     opacity: 0.85;
 }
 
