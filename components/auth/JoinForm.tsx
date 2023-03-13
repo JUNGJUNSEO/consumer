@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer, useState } from "react"
-import AuthButton from "../ui/Button/AuthButton"
+import AuthButton from "../ui/button/AuthButton"
 import useValidator from "./hooks/useValidator"
 import styles from './LoginForm.module.css'
 
