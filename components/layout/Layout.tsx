@@ -5,7 +5,7 @@ import Modal from "../ui/Modal"
 import Link from 'next/link';
 import Logo from './Logo'
 import UserIcon from "./UserIcon"
-import RoundButton from "../ui/Button/RoundButton";
+import RoundButton from "../ui/button/RoundButton";
 import UserMenu from "./UserMenu"
 import AuthFormContainer from "@/containers/AuthFormContainer"
 import useSWR from 'swr'
