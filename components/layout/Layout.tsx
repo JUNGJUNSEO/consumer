@@ -5,11 +5,11 @@ import Modal from "../ui/Modal"
 import Link from 'next/link';
 import Logo from './Logo'
 import UserIcon from "./UserIcon"
-import RoundButton from "../ui/Button/RoundButton"
+import RoundButton from "../ui/Button/RoundButton";
 import UserMenu from "./UserMenu"
 import AuthFormContainer from "@/containers/AuthFormContainer"
 import useSWR from 'swr'
-import { useRouter } from "next/router";
+
 
 
 const Layout = ({ children }: PropsWithChildren) => {
@@ -58,7 +58,7 @@ const Layout = ({ children }: PropsWithChildren) => {
                     {!isLoading && user.loggedIn ? (
                         <>
                             <div className={styles.newPost}>
-                                <RoundButton >
+                                <RoundButton>
                                     <Link href="/write">비교 상품 만들기</Link>
                                 </RoundButton>
                             </div>
