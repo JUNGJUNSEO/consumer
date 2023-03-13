@@ -1,4 +1,4 @@
-import AuthButton from "../ui/Button/AuthButton"
+import AuthButton from "../ui/button/AuthButton"
 
 const JoinButton = () => {
 
