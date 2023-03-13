@@ -6,6 +6,7 @@ import TagList from "./TagList"
 import { IPost } from "@/lib/models/post"
 import { formatDate } from "@/lib/utils"
 import Link from "next/link"
+import Image from "next/image"
 
 export type PostCardProps = {
     post : IPost
@@ -38,7 +39,7 @@ function PostCard({post} : PostCardProps){
                 <div className={styles.author}>
                     <Link href={"/[userId]"} as={`/${username}`}>
                         {avatarUrl ? (
-                            <img src={`./images/${avatarUrl}`} alt="product image"/>
+                            <Image src={`./images/${avatarUrl}`} alt="product image"/>
                         ): (
                             <div className={styles.nameImg}>{name}</div>
                         )}
