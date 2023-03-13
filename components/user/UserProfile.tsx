@@ -1,5 +1,5 @@
 import Link from "next/link"
-import RoundButton from "../ui/Button/RoundButton"
+import RoundButton from "../ui/button/RoundButton"
 import styles from "./UserProfile.module.css"
 
 function UserProfile() {
