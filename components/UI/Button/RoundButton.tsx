@@ -1,15 +1,12 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 import classes from './RoundButton.module.css'
 
-type RoundButtonProps = {
-    children: React.ReactNode;
-}
 
-const RoundButton: React.FC<RoundButtonProps> = ({children}) => {
+const RoundButton = (props: PropsWithChildren) => {
 
     return (
         <div className={classes['round-button']}>
-            {children}
+            {props.children}
         </div>
     )
 }
