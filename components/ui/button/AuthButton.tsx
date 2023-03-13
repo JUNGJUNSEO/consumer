@@ -1,5 +1,5 @@
-import { PropsWithChildren } from "react"
-import classes from "./AuthButton.module.css"
+import { PropsWithChildren } from "react";
+import classes from "./AuthButton.module.css";
 
 function AuthButton(props:PropsWithChildren) {
 
