@@ -14,4 +14,4 @@ const RoundButton: React.FC<RoundButtonProps> = ({children}) => {
     )
 }
 
-export default RoundButton
+export default React.memo(RoundButton)
