@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from "./ProductSelect.module.css"
 import { AiFillCheckCircle } from "react-icons/ai";
+import Image from "next/image"
 
 interface ProductSelectProps{
   tableData: any[][]
