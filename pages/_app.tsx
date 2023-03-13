@@ -3,10 +3,8 @@ import { AppProps } from 'next/app';
 import { Noto_Sans_KR } from '@next/font/google';
 import Layout from '@/components/layout/Layout';
 import { ReactElement, ReactNode} from 'react';
-import { NextPage, NextPageContext } from 'next';
-import { getIronSession } from 'iron-session';
-import { sessionOptions, withSessionRoute } from '@/lib/withSession';
-import axios from 'axios';
+import { NextPage } from 'next';
+
 
 const notoSansKR = Noto_Sans_KR({
   subsets: ['latin'],
