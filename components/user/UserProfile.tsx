@@ -10,7 +10,10 @@ function UserProfile() {
         <div className={styles.block}>
             <div className={styles.container}>
                  <div className={styles.avatar}>
-                    <img src="https://codyhouse.co/app/assets/img/article-preview-img-author-1.svg"/>
+                    <img 
+                        src="https://codyhouse.co/app/assets/img/article-preview-img-author-1.svg"
+                        alt="avatar-image"
+                    />
                  </div>
                  <div className={styles.content}>
                     <h1 className={styles.userName}>
