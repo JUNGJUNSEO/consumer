@@ -10,8 +10,8 @@ const logoutRoute = async(req: NextApiRequest, res: NextApiResponse ) => {
   req.session.destroy()
 
   const url = req.headers.referer
-  if (url.includes('/new-post')) {
-    return res.redirect('/')
+  if (url.includes('/write')) {
+    return res.status(302).json({ success: true })
   }
 
   return res.status(200).json({ success: true });
