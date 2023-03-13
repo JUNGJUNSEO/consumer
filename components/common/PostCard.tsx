@@ -30,7 +30,7 @@ function PostCard({post} : PostCardProps){
             />
        
             <div className={styles.content}>
-                <TagList tags = {hashtags}/>
+                {/* <TagList tags = {hashtags}/> */}
                 <div className={styles.title}>
                     <h3 onClick = {showDetailHandler}>{title}</h3>
                 </div>
@@ -46,7 +46,7 @@ function PostCard({post} : PostCardProps){
 
                     <div className={styles.info}>
                         <div className={styles.name}>
-                            <Link href={"/[userId]"} as={`/${username}`}>by {username}</Link>
+                            by <Link href={"/[userId]"} as={`/${username}` }>{username}</Link>
                         </div>
                         <div className={styles.meta}>
                             <span>{formatDate(new Date(createdAt).toISOString())}</span>
