@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react"
-import RoundButton from "../ui/Button/RoundButton"
+import RoundButton from "../ui/button/RoundButton"
 import styles from "./BottomLayout.module.css"
 
 interface BottomLayoutProps {
