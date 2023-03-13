@@ -2,7 +2,7 @@ import { FC, useState } from "react"
 import Exit from "../ui/Exit"
 import ProductSelect from "./ProductSelect"
 import styles from "./PublishModal.module.css"
-import RoundButton from "@/components/ui/Button/RoundButton"
+import RoundButton from "@/components/ui/button/RoundButton"
 
 interface PublishModalProps {
     tableData: any[][]
