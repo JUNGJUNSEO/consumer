@@ -5,6 +5,7 @@ import PostComment from "./PostComment"
 import PostHead from "./PostHead"
 import ProductsComparisonTable from "./ProductsComparisonTable"
 import { ModelProps } from "@/types/model"
+import PostDescription from "./PostDesciption"
 
 interface PostTemplateProps extends ModelProps {
 }
@@ -33,6 +34,13 @@ const PostTemplate:React.FC<PostTemplateProps> = ({user, post}) => {
                 files={post?.files}
                 texts={post?.texts}
                 ownerPick={post?.owner_pick}
+            />
+            <PostDescription
+                files={post?.files}
+                texts={post?.texts}
+                ownerPick={post?.owner_pick}
+                description={post?.reason}
+            
             />
             <PostBottom/>
             <PostComment comments={post?.comments}/>
