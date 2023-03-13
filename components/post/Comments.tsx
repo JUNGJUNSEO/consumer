@@ -1,7 +1,7 @@
 import { formatDate } from "@/lib/utils"
 import styles from "./Comments.module.css"
 import { PostCommentProps } from "./PostComment"
-
+import Image from "next/image"
 
 const Comments:React.FC<PostCommentProps> = ({comments}) => {
 
@@ -12,7 +12,7 @@ const Comments:React.FC<PostCommentProps> = ({comments}) => {
                     <>
                         <li className={styles.comment} key={index}>
                             {comment.writer.avatarUrl ? 
-                                <img 
+                                <img
                                     className={styles.image}
                                     src={comment.writer.avatarUrl} 
                                     alt={comment.writer.username}
