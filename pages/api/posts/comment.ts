@@ -55,8 +55,8 @@ async function createCommentHandler(req: NextApiRequest, res: NextApiResponse) {
             writer: writer.username,
             avatarUrl: writer.avatarUrl,
             text,
-            date: Date.now(),
-          };
+            createdAt: new Date(),
+        };
         
         return res.status(200).json({
             message: "댓글이 등록되었습니다.",
