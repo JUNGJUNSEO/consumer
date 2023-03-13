@@ -5,4 +5,5 @@
     font-weight: bold;
     font-size: 1.3125rem;
     color: var(--primary-color);
+    letter-spacing: 0.125rem;
 }
