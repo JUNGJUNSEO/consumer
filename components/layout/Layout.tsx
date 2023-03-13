@@ -9,6 +9,7 @@ import RoundButton from "../ui/Button/RoundButton"
 import UserMenu from "./UserMenu"
 import AuthFormContainer from "@/containers/AuthFormContainer"
 import useSWR from 'swr'
+import { useRouter } from "next/router";
 
 
 const Layout = ({ children }: PropsWithChildren) => {
@@ -17,7 +18,6 @@ const Layout = ({ children }: PropsWithChildren) => {
     const [showShadow, setShowShadow] = useState(false);
     const fetcher = (url:string) => fetch(url).then((res) => res.json());
     const { data: user, error, isLoading } = useSWR('/api/session', fetcher)
-
   
     const modalHandler = () => {
         setShowModal((preState) => !preState);
