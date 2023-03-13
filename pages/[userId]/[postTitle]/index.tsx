@@ -57,6 +57,7 @@ export const getStaticProps = async({ params }: IPath) => {
       const { userId, postTitle } = params
 
       const user = await User.findOne({ username: userId });
+
       const post = await Post.findOne({ title: postTitle, owner: user._id }).populate({
         path: 'comments',
         populate: {
