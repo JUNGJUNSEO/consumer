@@ -1,4 +1,4 @@
-import styles from "./sermenu.module.css"
+import styles from "./Usermenu.module.css"
 import {SlLogout} from"react-icons/sl"
 import {CgProfile} from"react-icons/cg"
 import {BsCardHeading} from"react-icons/bs"
