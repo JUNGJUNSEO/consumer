@@ -1,7 +1,6 @@
 import classes from "./UserIcon.module.css"
 import { MdArrowDropDown } from "react-icons/md"
 import { PropsWithChildren } from "react"
-import Image from "next/image"
 
 interface UserIconProp {
     onClickMenu: () => void
