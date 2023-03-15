@@ -9,21 +9,17 @@ export async function middleware(req: NextRequest) {
     password: process.env.SECRET_COOKIE_PASSWORD,
     cookieName: "session",
     cookieOptions: {
-      secure: process.env.NODE_ENV === "production" ? true : false,
+      secure: process.env.NODE_ENV === "production",
     },
   });
 
   const { user } = session;
 
-  if (req.nextUrl.pathname.startsWith('/write')) {
-    if (!user) {
-      return NextResponse.rewrite(new URL('/', req.url))
-    }
+  if (req.nextUrl.pathname.startsWith('/write') && !user) {
+    return NextResponse.rewrite(new URL('/', req.url))
   }
 
-  if (req.nextUrl.pathname.startsWith('/join')) {
-    if (user) {
-      return NextResponse.rewrite(new URL('/', req.url))
-    }
+  if (req.nextUrl.pathname.startsWith('/join') && user) {
+    return NextResponse.rewrite(new URL('/', req.url))
   }
 }
