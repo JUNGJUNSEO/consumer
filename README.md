@@ -12,6 +12,10 @@
 | 데이터베이스  | MongoDB (Mongoose)                    |
 | 클라우드 플랫폼 | Vercel                                |
 
+## 아키텍처
+![consumer 아키텍쳐 drawio](https://user-images.githubusercontent.com/88026797/225546765-d67e9300-85ce-40fa-b5f0-c5da7c3a48d8.svg)
+
+
 ## 프로젝트 구조
 프로젝트의 구조는 다음과 같습니다.
 
