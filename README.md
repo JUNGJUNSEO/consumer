@@ -2,6 +2,22 @@
 이 프로젝트는 소비자가 직접 사용해본 제품들을 비교 작성하고 공유하는 것을 목표로 합니다. 
 프로젝트는 MongoDB, Express, React, Node.js (MERN) 스택으로 작성되었으며, Next.js, TypeScript, Mongoose를 사용했습니다.
 
+웹 사이트 주소: https://consumer-jdhpyo3rp-jungjunseo.vercel.app/
+
+## 기술 스택
+| 분류       | 기술 스택                           |
+|----------- |---------------------------------------|
+| 언어       | TypeScript (Next.js)                  |
+| 웹 프레임워크 | Next.js                               |
+| 데이터베이스  | MongoDB (Mongoose)                    |
+| 클라우드 플랫폼 | Vercel                                |
+
+## 아키텍처
+서비스 아키텍쳐는 아래와 같습니다.
+
+![consumer 아키텍쳐 drawio](https://user-images.githubusercontent.com/88026797/225546765-d67e9300-85ce-40fa-b5f0-c5da7c3a48d8.svg)
+
+
 ## 프로젝트 구조
 프로젝트의 구조는 다음과 같습니다.
 
