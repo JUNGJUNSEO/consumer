@@ -16,7 +16,7 @@ const PostDescription:React.FC<PostDescriptionProps> = ({ files, texts, ownerPic
         <div className={styles.block}>
             <div className={styles.wrapper}>
                 <div className={styles.image}>
-                    <img src={`/images/${files[ownerPick]}`}/>
+                    <img src={`/images/${files[ownerPick-1]}`}/>
                     <AiFillCheckCircle />
 
                 </div>
