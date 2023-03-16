@@ -2,6 +2,7 @@
 이 프로젝트는 소비자가 직접 사용해본 제품들을 비교 작성하고 공유하는 것을 목표로 합니다. 
 프로젝트는 MongoDB, Express, React, Node.js (MERN) 스택으로 작성되었으며, Next.js, TypeScript, Mongoose를 사용했습니다.
 
+웹 사이트 주소: https://consumer-jdhpyo3rp-jungjunseo.vercel.app/
 
 ## 기술 스택
 | 분류       | 기술 스택                           |
