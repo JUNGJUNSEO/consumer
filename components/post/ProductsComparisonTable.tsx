@@ -55,7 +55,7 @@ const ProductsComparisonTable: React.FC<ProductsComparisonTableProps> = ({files,
             {files.slice(currentProduct - 1, currentProduct - 1 + displayCount).map((cell, index) => (
               <th key={cell} >
                 <img src={`/images/${cell}`} alt="this is the image" />
-                {files.indexOf(cell) === ownerPick && (
+                {files.indexOf(cell) === ownerPick - 1 && (
                   <div className={styles.userPick}>
                     <AiFillCheckCircle />
                     <span>사용자 pick!</span>
