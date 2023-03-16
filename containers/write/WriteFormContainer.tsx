@@ -29,7 +29,7 @@ function WriteFormContainer() {
     }
 
     const handleClickProduct = (productId: number) => {
-      setSelectedProduct(productId);
+      setSelectedProduct(productId - 1);
     };
 
     const reasonChangeHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
